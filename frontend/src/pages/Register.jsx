@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -20,13 +21,29 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [dob, setDob] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/auth/register", {
+        firstname,
+        lastname,
+        dob,
+        email,
+        password,
+        role,
+      });
+      localStorage.setItem("token", response.data.token);
+      // Redirect or do something else upon successful registration
+    } catch (error) {
+      console.error("Registration failed:", error.response.data.message);
+    }
   };
 
   return (
@@ -62,6 +79,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(e) => setFirstname(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -71,6 +89,7 @@ export default function SignUp() {
                   id="lastName"
                   label="Last Name"
                   name="lastName"
+                  onChange={(e) => setLastname(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -80,6 +99,7 @@ export default function SignUp() {
                   id="email"
                   label="Email Address"
                   name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -92,6 +112,7 @@ export default function SignUp() {
                     label="Role"
                     defaultValue=""
                     required
+                    onChange={(e) => setRole(e.target.value)}
                   >
                     <MenuItem value="Buyer">Buyer</MenuItem>
                     <MenuItem value="Seller">Seller</MenuItem>
@@ -111,6 +132,7 @@ export default function SignUp() {
                   fullWidth
                   variant="outlined"
                   margin="normal"
+                  onChange={(e) => setDob(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,6 +143,7 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -142,7 +165,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
