@@ -14,6 +14,8 @@ const con = require("./db/connection.js");
 
 // using routes
 
+app.use("/api/seller", require("./routes/sellerRoute.js"));
+
 con
   .then((db) => {
     if (!db) return process.exit(1);
