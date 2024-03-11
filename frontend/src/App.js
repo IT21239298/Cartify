@@ -1,6 +1,8 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Navbar from "./components/Navbar";
+import Item from "./pages/seller/Item";
+import Selleritem from "./pages/seller/Selleritem";
+// import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -10,6 +12,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/item" element={<Item />} />
+        <Route path="/selleritem" element={<Selleritem />} />
 
         {/* <Feedback /> */}
       </Routes>

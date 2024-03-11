@@ -1,20 +1,25 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-let SellerItemSchema = new Schema(
-  {
-    itemName: { type: String },
-    itemDescription: { type: String },
-    itemImage: { type: String },
-    itemPrice: { type: Number },
-    itemStock: { type: Number },
-    date: { type: String },
-    time: { type: String },
+const itemSchema = new mongoose.Schema({
+  image: String,
+  title: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  description: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+});
 
-const Sellitem = mongoose.model("sellitem", SellerItemSchema);
-module.exports = { Sellitem };
+const Item = mongoose.model("Item", itemSchema);
+
+module.exports = Item;

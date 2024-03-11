@@ -1,11 +1,9 @@
+// Import necessary modules and middleware
 const express = require("express");
 const router = express.Router();
-const sellerController = require("../controllers/sellerController");
+const itemController = require("../controllers/sellerController");
 
-router.post("/add", sellerController.addsellItem);
-router.get("/get", sellerController.getsellItems);
-router.get("/get/:id", sellerController.getsellItem);
-router.put("/update/:id", sellerController.updatesellItem);
-router.delete("/delete/:id", sellerController.deletesellItem);
+router.post("/add", itemController.addItem);
+router.get("/get", itemController.getAllItems);
 
 module.exports = router;
