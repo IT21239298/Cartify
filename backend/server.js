@@ -5,7 +5,7 @@ const path = require("path");
 
 const app = express();
 
-require("dotenv").config({ path: "./config.env" });
+require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT || 5000;
 
 // use middleware

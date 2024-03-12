@@ -1,4 +1,4 @@
-import React, { useState } from "react"; // Import useState from React
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,17 +7,22 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
 export default function SellerItemCard({
-  // Corrected component name to start with an uppercase letter
+  id,
   title,
   subheader,
   image,
   description,
-  url,
+  price,
+  quantity,
+  onEdit,
+  onDelete,
 }) {
-  const [hovered, setHovered] = useState(false); // Using useState hook
+  const [hovered, setHovered] = useState(false);
 
   return (
     <Card
@@ -34,7 +39,7 @@ export default function SellerItemCard({
       <CardHeader
         titleTypographyProps={{
           variant: "h6",
-          style: { lineHeight: "1", minHeight: "4em", fontWeight: "bold" },
+          style: { fontWeight: "bold" },
         }}
         title={title}
         subheader={subheader}
@@ -44,29 +49,27 @@ export default function SellerItemCard({
         maxWidth="345px"
         height="194px"
         src={image}
-        // src={`${API_IMG_URL}/${image}`} // Accessing image from props
         alt={title}
       />
-      <CardContent>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          {description}
-        </Typography>
+      <CardContent style={{ display: "flex", justifyContent: "space-between" }}>
+        <div>
+          <Typography variant="body2" color="text.secondary">
+            Price: {price}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Quantity: {quantity}
+          </Typography>
+        </div>
       </CardContent>
-      <CardActions>
-        <Link to={url}>
+      <CardActions disableSpacing>
+        <IconButton onClick={onEdit}>
+          <EditIcon />
+        </IconButton>
+        <IconButton onClick={() => onDelete(id)}>
+          <DeleteIcon />
+        </IconButton>
+        <Link to={`/seller/${id}`} style={{ marginLeft: "auto" }}>
           <IconButton
-            component={Link}
-            to={url}
             sx={{
               bgcolor: "#0178ba",
               color: "#FFFFFF",

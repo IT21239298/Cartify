@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import axios from "axios";
-import SellerItemCard from "../../components/seller/sellerItemcard"; // Corrected import statement
+import SellerItemCard from "../../components/seller/sellerItemcard";
 import { API_BASE_URL } from "../../utils/constants";
+import moment from "moment";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 export default function SellerItem() {
-  // Corrected component name to match conventions
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
   const [cardData, setCardData] = useState([]);
+
+  const handleDelete = async (itemId) => {
+    try {
+      await axios.delete(`${API_BASE_URL}/api/seller/delete/${itemId}`);
+      setCardData(cardData.filter((item) => item._id !== itemId));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Define handleEdit function to navigate to edit page
+  const handleEdit = (itemId) => {
+    // Navigate to edit page using useNavigate
+    navigate(`/UpdateItem/${itemId}/edit`);
+  };
 
   useEffect(() => {
     const fetchAllContents = async () => {
       try {
         const res = await axios.get(`${API_BASE_URL}/api/seller/get`);
-        setCardData(res.data); // Corrected setting card data from API response
+        setCardData(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -22,16 +40,19 @@ export default function SellerItem() {
 
   return (
     <div>
+      <Button href="/item">Add Items</Button>
       <Grid container spacing={2} justifyContent="center">
         {cardData.map((sitem, index) => (
           <Grid item key={index} xs={12} sm={6} md={3}>
             <Box marginTop={1}>
               <SellerItemCard
                 title={sitem.title}
-                subheader={sitem.price}
+                subheader={moment(sitem).format("MMM DD, YYYY")}
+                price={sitem.price}
                 image={`http://localhost:8082/${sitem.image}`}
-                description={sitem.description}
-                // url={`/consultations/public-consultations/${content.content_url}`}
+                quantity={sitem.quantity}
+                onDelete={() => handleDelete(sitem._id)}
+                onEdit={() => handleEdit(sitem._id)} // Pass item ID to handleEdit
               />
             </Box>
           </Grid>

@@ -68,3 +68,60 @@ exports.getAllItems = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+// Controller method for deleting an item
+exports.deleteItem = async (req, res) => {
+  const { itemId } = req.params;
+  try {
+    await Item.findByIdAndDelete(itemId);
+    res.status(200).json({ message: "Item deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// Controller function for updating seller item details
+exports.updateSellerItem = async (req, res) => {
+  const { itemId } = req.params;
+  const { title, description, price, quantity } = req.body;
+
+  try {
+    // Find the seller item by ID
+    let sellerItem = await Item.findById(itemId);
+
+    if (!sellerItem) {
+      return res.status(404).json({ error: "Seller item not found" });
+    }
+
+    // Update the seller item details
+    sellerItem.title = title;
+    sellerItem.description = description;
+    sellerItem.price = price;
+    sellerItem.quantity = quantity;
+
+    // Save the updated seller item
+    await sellerItem.save();
+
+    // Return the updated seller item
+    res.json(sellerItem);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+//get one item
+exports.getItemById = async (req, res) => {
+  const { itemId } = req.params;
+  try {
+    const item = await Item.findById(itemId);
+    if (!item) {
+      return res.status(404).json({ error: "Item not found" });
+    }
+    res.status(200).json(item);
+  } catch (error) {
+    console.error("Error fetching item:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
