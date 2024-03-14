@@ -3,16 +3,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { API_BASE_URL } from "../../utils/constants";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const defaultTheme = createTheme();
@@ -22,7 +19,12 @@ export default function SignIn() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("image", event.target.image.files[0]); // Assuming 'image' is the field name in the form
+    const files = event.target.image.files; // Access all selected files
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append("images", files[i]); // Append each file to the FormData object
+    }
+
     formData.append("title", event.target.title.value);
     formData.append("description", event.target.description.value);
     formData.append("price", event.target.price.value);
@@ -38,6 +40,7 @@ export default function SignIn() {
           },
         }
       );
+      navigate("/selleritem");
       console.log("Server response:", response.data);
       // Handle success response from the server
     } catch (error) {
@@ -45,6 +48,7 @@ export default function SignIn() {
       // Handle error response from the server
     }
   };
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -77,7 +81,7 @@ export default function SignIn() {
               id="image"
               name="image"
               type="file"
-              inputProps={{ accept: "image/*" }}
+              inputProps={{ multiple: true, accept: "image/*" }} // Allow multiple files
             />
             <TextField
               margin="normal"

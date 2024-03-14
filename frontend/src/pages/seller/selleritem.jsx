@@ -49,7 +49,8 @@ export default function SellerItem() {
                 title={sitem.title}
                 subheader={moment(sitem).format("MMM DD, YYYY")}
                 price={sitem.price}
-                image={`http://localhost:8082/${sitem.image}`}
+                images={sitem.images}
+                description={sitem.description}
                 quantity={sitem.quantity}
                 onDelete={() => handleDelete(sitem._id)}
                 onEdit={() => handleEdit(sitem._id)} // Pass item ID to handleEdit

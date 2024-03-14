@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage }).single("image"); // 'image' is the field name in the form
+const upload = multer({ storage: storage }).array("images", 5); // 'images' is the field name in the form, 5 is the maximum number of files
 
 // Controller method for adding a new item
 exports.addItem = async (req, res) => {
@@ -34,7 +34,7 @@ exports.addItem = async (req, res) => {
 
         // Create a new item
         const newItem = new Item({
-          image: req.file.path, // Path to the uploaded file
+          images: req.files.map((file) => file.path), // Array of paths to the uploaded files
           title,
           description,
           price,
