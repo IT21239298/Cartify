@@ -18,6 +18,10 @@ const itemSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  categories: {
+    type: String,
+    required: true,
+  },
 });
 
 const Item = mongoose.model("Item", itemSchema);

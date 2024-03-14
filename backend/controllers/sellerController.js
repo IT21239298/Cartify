@@ -30,13 +30,14 @@ exports.addItem = async (req, res) => {
 
       // File uploaded successfully.
       try {
-        const { title, description, price, quantity } = req.body;
+        const { title, description, categories, price, quantity } = req.body;
 
         // Create a new item
         const newItem = new Item({
           images: req.files.map((file) => file.path), // Array of paths to the uploaded files
           title,
           description,
+          categories,
           price,
           quantity,
         });
@@ -84,7 +85,7 @@ exports.deleteItem = async (req, res) => {
 // Controller function for updating seller item details
 exports.updateSellerItem = async (req, res) => {
   const { itemId } = req.params;
-  const { title, description, price, quantity } = req.body;
+  const { title, description, categories, price, quantity } = req.body;
 
   try {
     // Find the seller item by ID
@@ -97,6 +98,7 @@ exports.updateSellerItem = async (req, res) => {
     // Update the seller item details
     sellerItem.title = title;
     sellerItem.description = description;
+    sellerItem.categories = categories;
     sellerItem.price = price;
     sellerItem.quantity = quantity;
 

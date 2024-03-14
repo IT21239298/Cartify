@@ -33,6 +33,7 @@ export default function SellerItemCard({
       sx={{
         border: "6px solid #e0e0e0",
         maxWidth: 350,
+        height: "70%",
         "&:hover": {
           bgcolor: hovered ? "#D3D3D3" : "#",
         },
@@ -75,7 +76,7 @@ export default function SellerItemCard({
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",
-            WebkitLineClamp: 3,
+            WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
           }}
           variant="body2"

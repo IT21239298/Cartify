@@ -8,6 +8,10 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import Container from "@mui/material/Container";
 import { API_BASE_URL } from "../../utils/constants";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -22,6 +26,7 @@ export default function EditSellerItem() {
     description: "",
     price: "",
     quantity: "",
+    categories: "", // Initialize categories field
   });
 
   useEffect(() => {
@@ -37,7 +42,11 @@ export default function EditSellerItem() {
   }, [id]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: name === "categories" ? e.target.value : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -96,6 +105,21 @@ export default function EditSellerItem() {
               onChange={handleChange}
               autoComplete="description"
             />
+            <FormControl fullWidth>
+              <InputLabel id="categories">Categories</InputLabel>
+              <Select
+                labelId="categories"
+                id="categories"
+                value={formData.categories}
+                label="Categories"
+                name="categories"
+                onChange={handleChange}
+              >
+                <MenuItem value="Clothes">Clothes</MenuItem>
+                <MenuItem value="Electronics">Electronics</MenuItem>
+                <MenuItem value="Toys">Toys</MenuItem>
+              </Select>
+            </FormControl>
             <TextField
               margin="normal"
               fullWidth
