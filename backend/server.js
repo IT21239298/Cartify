@@ -1,18 +1,30 @@
+const authRouter = require("./routes/auth.router.js");
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
 const app = express();
 
 require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 5000;
 
 // use middleware
-app.use(cors());
+// use middleware
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Change this to the origin of your frontend application
+    // origin: 'http://localhost:3001',
+    credentials: true, // Enable credentials (cookies, authorization headers, etc.)
+  })
+);
+
 app.use(express.json());
+app.use(cookieParser());
+
 // mongodb connection
 const con = require("./db/connection.js");
 
-// using routes
+//authentication route
+app.use(authRouter);
 
 con
   .then((db) => {
