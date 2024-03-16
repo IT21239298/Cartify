@@ -1,10 +1,12 @@
 const authRouter = require("./routes/auth.router.js");
+const router = require("./routes/sellerRoute.js");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+
 const app = express();
 
-require("dotenv").config({ path: "./config.env" });
+require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT || 5000;
 
 // use middleware
@@ -20,12 +22,15 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+
+app.use('/uploads', express.static(__dirname + '/uploads'));
 // mongodb connection
 const con = require("./db/connection.js");
 
+// using routes
 //authentication route
 app.use(authRouter);
-
+app.use("/api/seller", require("./routes/sellerRoute.js"));
 con
   .then((db) => {
     if (!db) return process.exit(1);
