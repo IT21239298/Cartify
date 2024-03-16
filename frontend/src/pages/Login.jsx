@@ -27,7 +27,7 @@ useEffect(() => {
       navigate("/");
       window.location.reload();
     } else if (userInfo.roles.includes("Superadmin")) {
-      navigate("/seller");
+      navigate("/selleritem");
       window.location.reload();
     }
   }
