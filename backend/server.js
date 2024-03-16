@@ -1,3 +1,4 @@
+const authRouter = require("./routes/auth.router.js");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -24,7 +25,8 @@ app.use(cookieParser());
 const con = require("./db/connection.js");
 
 // using routes
-
+//authentication route
+app.use(authRouter);
 con
   .then((db) => {
     if (!db) return process.exit(1);
