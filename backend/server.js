@@ -1,10 +1,10 @@
-const authRouter = require("./routes/auth.router.js");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+
 const app = express();
 
-require("dotenv").config({ path: "./config.env" });
+require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT || 5000;
 
 // use middleware
@@ -23,8 +23,7 @@ app.use(cookieParser());
 // mongodb connection
 const con = require("./db/connection.js");
 
-//authentication route
-app.use(authRouter);
+// using routes
 
 con
   .then((db) => {
