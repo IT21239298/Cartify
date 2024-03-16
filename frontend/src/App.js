@@ -1,18 +1,33 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Item from "./pages/seller/Item";
-import Selleritem from "./pages/seller/Selleritem";
+import Selleritem from "./pages/seller/selleritem";
 import UpdateItem from "./pages/seller/UpdateItem";
+import Header from "./components/Header"
+import Welcome from "./pages/Welcome"
+import Seller from "./pages/Seller"
+import Customer from "./pages/Customer"
+
+
 // import Navbar from "./components/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <Navbar /> */}
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+      <Header />
+      
+        {" "}
+        {/* Apply margin top to the content after the Header */}
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/seller" element={<Seller />} />
+          <Route path="/customer" element={<Customer />} />
+      
+      
         <Route path="/item" element={<Item />} />
         <Route path="/selleritem" element={<Selleritem />} />
         <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
