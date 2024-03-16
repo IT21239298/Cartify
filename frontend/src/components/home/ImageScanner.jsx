@@ -25,7 +25,7 @@ function ImageScanner() {
 
 
     return (
-        <div className='flex mt-10'>
+        <div className='bg-inherit outline outline-offset-2 outline-blue-950  flex mt-1 py-5 '>
             <div
                 className="flex items-center justify-center h-64 border-dashed border-2 border-gray-400 p-4 ml-20 mr-20 mb-20"
                 onDrop={handleDrop}
@@ -39,7 +39,7 @@ function ImageScanner() {
             </div>
             <div className=''>
                 <div className='text-lg text-black font-semibold mr-10 mb-10'>
-                    <h1 className='text-5xl'>Transform your shopping experience</h1> <br /> <span className='font-normal'>simply scan and drag & drop your image to discover relevant categories <br /> tailored just for you!</span>
+                    <h1 className='text-3xl'>Transform your shopping experience</h1> <br /> <span className='font-normal'>Simply scan and drag & drop your image to discover relevant categories <br /> tailored just for you!</span>
                 </div>
                 <SecondaryButton onClick={() =>  {}} title={'Scan Now'} />
             </div>

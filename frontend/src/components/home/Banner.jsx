@@ -1,24 +1,26 @@
-import React from 'react'
-import banner from "../../assets/images/banner-bg-1.jpg"
-import DefaultButton from './DefaultButton'
+import React from 'react';
+import banner from '../../assets/images/bg1.png';
+import DefaultButton from './DefaultButton';
 
-// background-image: url('assets/images/banner-bg.jpg');
 function Banner() {
     return (
-        <div className="bg-cover bg-no-repeat bg-center py-36 " style={{backgroundImage: `url(${banner})`}}>
-            <div className="container">
-                <h1 className="text-6xl text-gray-800 font-medium mb-4 capitalize text-left">
-                    best collection for <br /> home decoration
-                </h1>
-                <p className='text-left'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam <br />
-                    accusantium perspiciatis, sapiente
-                    magni eos dolorum ex quos dolores odio</p>
-                <div className="mt-12 text-left">
-                   <DefaultButton title={'Shop Now'} />
+        <div className="bg-blue-300 py-8">
+            <div className="container flex items-center justify-between mx-auto px-4">
+                <div className="w-1/2">
+                    <h1 className="text-6xl text-gray-800 font-medium mb-4 capitalize">
+                    Explore, Shop Now <br/>  and Save!
+                    </h1>
+                    <p className="text-gray-700 text-lg text-justify mb-8">Explore our extensive and diverse range of high-quality products, shop now to discover exceptional deals, and save big on your favorite items with our exclusive special offers and discounts.</p>
+                    <div>
+                        <DefaultButton title="Shop Now" />
+                    </div>
+                </div>
+                <div className="w-1/2 flex justify-end">
+                    <img src={banner} alt="Banner" className="max-w-full h-auto" />
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Banner
+export default Banner;

@@ -2,9 +2,9 @@ import React from 'react'
 
 function SecondaryHeader() {
   return (
-    <nav className="bg-gray-300">
+    <nav className="bg-slate-100 shadow-lg hover:shadow-2xl">
         <div className="container flex">
-            <div className="px-8 py-4 bg-primary md:flex items-center cursor-pointer relative group hidden">
+            <div className="px-8 py-4 bg-blue-950 text-blue-950 md:flex items-center cursor-pointer relative group hidden">
                 <span className="text-white">
                     <i className="fa-solid fa-bars"></i>
                 </span>
@@ -42,10 +42,10 @@ function SecondaryHeader() {
 
             <div className="flex items-center justify-between flex-grow md:pl-12 py-5">
                 <div className="flex items-center space-x-6 capitalize">
-                    <a href="/" className="text-blue-950 hover:text-sky-400 transition">Home</a>
-                    <a href="pages/shop.html" className="text-blue-950 hover:text-white transition">Shop</a>
-                    <a href="#" className="text-blue-950 hover:text-white transition">About us</a>
-                    <a href="/ContactUs" className="text-blue-950 hover:text-white transition">Contact us</a>
+                    <a href="/" className="font-bold text-blue-500 hover:text-blue-950 transition">Home</a>
+                    <a href="pages/shop.html" className="font-bold  text-blue-500 hover:text-blue-950 transition">Shop</a>
+                    <a href="#" className="font-bold text-blue-500 hover:text-blue-950 transition">About us</a>
+                    <a href="/ContactUs" className="font-bold text-blue-500 hover:text-blue-950 transition">Contact us</a>
                 </div>
                 {/* <a href="pages/login.html" className="text-gray-200 hover:text-white transition">Login</a> */}
             </div>
