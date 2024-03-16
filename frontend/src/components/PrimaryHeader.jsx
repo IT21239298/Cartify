@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg"
 import { Menu, Transition } from "@headlessui/react";
 
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
@@ -16,6 +17,8 @@ function PrimaryHeader() {
     const dispatch = useDispatch();
     const userInfoString = useSelector((state) => state.auth.userInfo);
     const navigate = useNavigate();
+
+    const cartItemNumber = useSelector((state) => state.product.cartItem);
 
     // Check if userInfoString is a JSON string and parse it
     const userInfo =
@@ -53,15 +56,15 @@ function PrimaryHeader() {
 
                 <div className="flex items-center space-x-4">
 
-                    <a href="#" className="text-center text-gray-700 hover:text-primary transition relative">
+                    <Link  to={"/cart"} className="text-center text-gray-700 hover:text-primary transition relative">
                         <div className="text-2xl">
                             <i className="fa-solid fa-bag-shopping" />
                         </div>
                         <div className="text-xs leading-3">Cart</div>
                         <div
                             className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-                            2</div>
-                    </a>
+                             {cartItemNumber.length}</div>
+                    </Link>
 
                     <Menu as="div" className="relative inline-block text-left">
                         <div>

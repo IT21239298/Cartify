@@ -31,6 +31,7 @@ export default function SellerItem() {
       try {
         const res = await axios.get(`${API_BASE_URL}/api/seller/get`);
         setCardData(res.data);
+        console.log("res card dtaaaa",res.data)
       } catch (err) {
         console.log(err);
       }
