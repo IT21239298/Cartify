@@ -28,12 +28,10 @@ function LoginForm({ email, password, onChange, handleSubmit }) {
         </div>
 
         <div className="form-group">
-          <button
-            type="submit"
-            className="btn btn-block"
-            onClick={handleSubmit}
-          >
-            Submit
+       
+          <button className="w-full max-w-[150px] m-auto  bg-red-500 hover:bg-red-600 cursor-pointer  text-white text-xl font-medium text-center py-1 rounded-full mt-4"
+          onClick={handleSubmit}>
+            Login
           </button>
         </div>
       </form>
