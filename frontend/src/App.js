@@ -25,9 +25,9 @@ function App() {
 
      <PrimaryHeader />
       <SecondaryHeader />
-      <div className="margin-top:20px">
+     
 
-      <Header />
+{/* <Header /> */}
       
 
         {" "}
