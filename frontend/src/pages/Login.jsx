@@ -24,10 +24,10 @@ useEffect(() => {
   if (userInfo) {
     // Check if "User" role is included in the roles array
     if (userInfo.roles.includes("User")) {
-      navigate("/customer");
+      navigate("/");
       window.location.reload();
     } else if (userInfo.roles.includes("Superadmin")) {
-      navigate("/seller");
+      navigate("/selleritem");
       window.location.reload();
     }
   }
