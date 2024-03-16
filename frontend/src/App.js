@@ -41,7 +41,7 @@ function App() {
           <Route path="/customer" element={<Customer />} />
           <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
-      </div>
+      
     </BrowserRouter>
   );
 }
