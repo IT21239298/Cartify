@@ -6,6 +6,7 @@ import PrimaryHeader from "./components/PrimaryHeader";
 import SecondaryHeader from "./components/SecondaryHeader";
 import Seller from "./pages/Seller";
 import Customer from "./pages/Customer";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/seller" element={<Seller />} />
           <Route path="/customer" element={<Customer />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
       </div>
     </BrowserRouter>
