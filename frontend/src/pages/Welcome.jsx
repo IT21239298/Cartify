@@ -2,6 +2,7 @@
 import { Sell } from "@mui/icons-material";
 import React from "react";
 import { FaSignInAlt } from "react-icons/fa";
+import SellerItem from "./seller/selleritem";
 
 
 function Welcome() {
@@ -11,6 +12,7 @@ function Welcome() {
         <FaSignInAlt /> Welcome
       </h1>
       <p>Welcomeee</p>
+      <SellerItem/>
     </section>
   );
 }
