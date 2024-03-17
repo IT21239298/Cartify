@@ -5,7 +5,7 @@ import "./main.css";
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import App from "./App";
 import { Provider } from "react-redux";
-import store from "./auth/redux/store";
+import store from "./services/redux/store";
 import { AuthContextProvider } from "./context/authContext";
 
 

@@ -15,36 +15,43 @@ import Item from "./pages/seller/Item";
 import Selleritem from "./pages/seller/selleritem";
 import UpdateItem from "./pages/seller/UpdateItem";
 
+import Shop from "./pages/shop";
+import Menu from "./pages/cart/Menu";
+import Cart from "./pages/Cart";
 
 // import Navbar from "./components/Navbar";
-
 
 function App() {
   return (
     <BrowserRouter>
+      <PrimaryHeader />
+      <SecondaryHeader />
+     
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/seller" element={<Seller />} />
+        <Route path="/customer" element={<Customer />} />
+        <Route path="/cart" element={<Cart />} />
+         <Route path="/ContactUs" element={<ContactUs />} />
 
-     <PrimaryHeader />
-     <SecondaryHeader />
-        
-
-        {" "}
-        {/* Apply margin top to the content after the Header */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/seller" element={<Seller />} />
-          <Route path="/customer" element={<Customer />} />
-          <Route path="/ContactUs" element={<ContactUs />} />
 
         <Route path="/item" element={<Item />} />
         <Route path="/selleritem" element={<Selleritem />} />
         <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
 
 
+        <Route path="/shop" element={<Shop/>} />
+        <Route path="menu" element={<Menu />} />
+       <Route path="menu/:filterby" element={<Menu />} />
+      
+
+
 
         </Routes>
         <FooterSecondary />
+
     </BrowserRouter>
   );
 }
