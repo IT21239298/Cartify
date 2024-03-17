@@ -9,17 +9,18 @@ import {
 } from "../../services/redux/productSlice";
 import { useDispatch } from "react-redux";
 
-const CartProduct = ({ id, image, model, brand, qty, total, price }) => {
+const CartProduct = ({ id, images, categories, qty, title, price, total }) => {
   const dispatch = useDispatch();
+
   return (
     <div className="bg-slate-200 p-2 flex gap-4 rounded border border-slate-300">
       <div className="p-3 bg-white rounded overflow-hidden">
-        <img src={image} className="h-28 w-40 object-cover " />
+        <img src={images} className="h-28 w-40 object-cover " />
       </div>
       <div className="flex flex-col gap-1 w-full">
         <div className="flex justify-between">
           <h3 className="font-semibold text-slate-600  capitalize text-lg md:text-xl">
-            {brand}
+            {title}
           </h3>
           <div
             className="cursor-pointer text-slate-700 hover:text-red-500"
@@ -28,7 +29,7 @@ const CartProduct = ({ id, image, model, brand, qty, total, price }) => {
             <AiFillDelete />
           </div>
         </div>
-        <p className=" text-slate-500  font-medium ">{model}</p>
+        <p className=" text-slate-500  font-medium ">{categories}</p>
         <p className=" font-bold text-base">
           <span className="text-red-500 ">$</span>
           <span>{price}</span>

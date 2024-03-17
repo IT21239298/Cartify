@@ -19,7 +19,8 @@ const Cart = () => {
   return (
     <>
       <div className="p-2 md:p-4">
-        <h2 className=" text-center text-lg md:text-2xl font-bold text-slate-600">
+        <h2 className="text-3xl font-medium font-sans text-primary uppercase mt-2 mb-6 mx-auto px-10">
+          {" "}
           Your Cart Items
         </h2>
 
@@ -30,14 +31,16 @@ const Cart = () => {
               {productCartItem.map((el) => {
                 return (
                   <CartProduct
-                  key={el._id}
-                  id={el._id}
-                  images={el.images}
-                  categories={el.categories}
-                  quantity={el.quantity}
-                  price={el.price}
-                  description={el.description}
-                  title={el.title}
+                    key={el._id}
+                    id={el._id}
+                    images={el.images}
+                    categories={el.categories}
+                    quantity={el.quantity}
+                    price={el.price}
+                    description={el.description}
+                    title={el.title}
+                    total={el.total}
+                    qty={el.qty}
                   />
                 );
               })}
