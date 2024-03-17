@@ -36,6 +36,13 @@ function App() {
           <Route path="/seller" element={<Seller />} />
           <Route path="/customer" element={<Customer />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+
+        <Route path="/item" element={<Item />} />
+        <Route path="/selleritem" element={<Selleritem />} />
+        <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
+
+
+
         </Routes>
         <FooterSecondary />
     </BrowserRouter>
