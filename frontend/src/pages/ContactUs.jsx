@@ -1,9 +1,19 @@
 import React from 'react'
+import contact from "../assets/images/contact.jpg"
 
 function ContactUs() {
   return (
-    <div className="bg-gray-200 min-h-screen flex items-center justify-center">
-    <div className="bg-white p-6 rounded-lg shadow-md w-96">
+
+    <div className="bg-white py-8">
+            <div className="container flex items-center justify-between mx-auto px-4">
+
+            <div className="w-1/2 h-full ">
+                    <img src={contact} alt="contact" className="max-w-full h-1000" />
+                </div>
+          
+            <div className="w-1/2 h-full">
+                <div className="bg-white min-h-screen flex items-center justify-center"  >       
+      <div className="bg-white p-6 rounded-lg shadow-md w-96">
       <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
       <form>
         <div className="mb-4">
@@ -28,6 +38,12 @@ function ContactUs() {
       </form>
     </div>
   </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    
   )
 }
 
