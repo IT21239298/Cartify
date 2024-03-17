@@ -9,7 +9,7 @@ const Footer = () => {
 
     <>
 <Box
-    sx={{textAlign:"center" ,bgcolor:"rgb(241 245 249)" , color: "rgb(147 197 253)",hover:"rgb(23 37 84)" , p:1}}>
+    sx={{textAlign:"center" ,bgcolor:"rgb(241 245 249)" , color: "rgb(23 37 84)",hover:"rgb(3 105 161)" , p:1}}>
 
 <Box   
 sx={{
@@ -20,7 +20,7 @@ sx={{
         mr:2
     },
     "& svg:hover" : {
-        color:'rgb(23 37 84)',
+        color:'rgb(30 64 175)',
         transform:'translateX(5px)',
         transition:'all 400ms'
     }

@@ -53,13 +53,13 @@ function PrimaryHeader() {
 
                 <div className="flex items-center space-x-4">
 
-                    <a href="#" className="text-center text-white hover:text-blue-950 transition relative shadow-xl">
+                    <a href="#" className="text-center text-blue-950 hover:text-blue-800 transition relative shadow-xl">
                         <div className="text-2xl">
                             <i className="fa-solid fa-bag-shopping" />
                         </div>
                         <div className="text-xs leading-3">Cart</div>
                         <div
-                            className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-blue-950 text-white text-xs">
+                            className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-red-400 text-blue-950 text-xs">
                             2</div>
                     </a>
 
@@ -74,7 +74,7 @@ function PrimaryHeader() {
                                             alt="getimg"
                                         />
                                     ) : (
-                                        <div href="#" className="text-center text-white hover:text-blue-950 transition relative shadow-xl">
+                                        <div href="#" className="text-center text-blue-950 hover:text-blue-800 transition relative shadow-xl">
                                             <div className="text-2xl">
                                                 <i className="fa-regular fa-user"></i>
                                             </div>

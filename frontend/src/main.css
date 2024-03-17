@@ -595,6 +595,8 @@ select {
   outline: 1px auto -webkit-focus-ring-color;
 }
 
+
+
 body {
   font-family: Poppins, sans-serif;
 }
@@ -1363,7 +1365,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-primary {
   --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  background-color: rgb(23 37 84 / var(--tw-bg-opacity));
 }
 
 .bg-secondary {
@@ -1421,7 +1423,7 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
 }
 .shadow-primary{
-  box-shadow: 0 25px 50px -12px rgb(23 37 84 / 0.25);
+  box-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.25);
 }
 .object-contain {
   -o-object-fit: contain;
@@ -1808,7 +1810,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hover\:text-primary:hover {
   --tw-text-opacity: 1;
-  color: rgb(23 37 84 / var(--tw-text-opacity));
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
 .hover\:text-white:hover {
