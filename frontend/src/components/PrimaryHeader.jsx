@@ -37,7 +37,7 @@ function PrimaryHeader() {
 
 
     return (
-        <header className="py-4 shadow-sm bg-white">
+        <header className="py-4 shadow-sm bg-blue-300">
             <div className="container flex items-center justify-between">
                 <a href="/">
                     <img src={logo} alt="Logo" className="w-32" />
@@ -48,23 +48,26 @@ function PrimaryHeader() {
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </span>
                     <input type="text" name="search" id="search"
-                        className="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
+                      className="w-full border border-indigo-950 border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex shadow-xl"
                         placeholder="search" />
                     <button
-                        className="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex">Search</button>
+                        className="bg-white border border-indigo-950 text-blue-950  px-8 rounded-r-md hover:bg-blue-950 hover:text-white transition hidden md:flex items-center justify-center cursor-grab">Search</button>
                 </div>
 
                 <div className="flex items-center space-x-4">
 
-                    <Link  to={"/cart"} className="text-center text-gray-700 hover:text-primary transition relative">
+                    <Link  to={"/cart"} className="text-center text-blue-950 hover:text-blue-800 transition relative shadow-xl">
+
                         <div className="text-2xl">
                             <i className="fa-solid fa-bag-shopping" />
                         </div>
                         <div className="text-xs leading-3">Cart</div>
                         <div
-                            className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
+
+                            className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-red-400 text-blue-950 text-xs">
                              {cartItemNumber.length}</div>
                     </Link>
+
 
                     <Menu as="div" className="relative inline-block text-left">
                         <div>
@@ -77,7 +80,7 @@ function PrimaryHeader() {
                                             alt="getimg"
                                         />
                                     ) : (
-                                        <div href="#" className="text-center text-gray-700 hover:text-primary transition relative">
+                                        <div href="#" className="text-center text-blue-950 hover:text-blue-800 transition relative shadow-xl">
                                             <div className="text-2xl">
                                                 <i className="fa-regular fa-user"></i>
                                             </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="bg-white pt-16 pb-12 border-t border-gray-100">
+    <footer className="bg-slate-100 pt-16 pb-12 border-t">
     <div className="container grid grid-cols-1 ">
         <div className="col-span-1 space-y-4">
             <img src="assets/images/logo.svg" alt="logo" className="w-30" />
