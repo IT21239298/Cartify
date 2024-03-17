@@ -40,15 +40,17 @@ function SecondaryHeader() {
                 </div>
             </div>
 
-<div>
+
+
     
-</div>
+
             <div className="flex items-center justify-between flex-grow md:pl-8 py-5">
                 <div className="flex items-center space-x-20 capitalize">
                     <a href="/" className=" font-bold text-blue-950  hover:bg-blue-950 hover:bg-cover hover:text-white transition">Home</a>
-                    <a href="pages/shop.html" className="font-bold  text-blue-950 hover:text-white transition">Shop</a>
+                    <a href="/shop" className="font-bold  text-blue-950 hover:text-white transition">Shop</a>
                     <a href="#" className="font-bold text-blue-950 hover:text-white transition">About us</a>
                     <a href="/ContactUs" className="font-bold text-blue-950 hover:text-white transition">Contact us</a>
+
                 </div>
                 {/* <a href="pages/login.html" className="text-gray-200 hover:text-white transition">Login</a> */}
             </div>
