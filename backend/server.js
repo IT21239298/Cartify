@@ -22,8 +22,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-
-app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 // mongodb connection
 const con = require("./db/connection.js");
 
@@ -31,6 +30,7 @@ const con = require("./db/connection.js");
 //authentication route
 app.use(authRouter);
 app.use("/api/seller", require("./routes/sellerRoute.js"));
+app.use(require("./routes/cart.router.js"));
 con
   .then((db) => {
     if (!db) return process.exit(1);

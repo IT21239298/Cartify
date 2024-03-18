@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { addCartItem } from "../../services/redux/productSlice";
+import { fetchAllCartItems } from "../../services/redux/productSlice";
 import { useDispatch } from "react-redux";
 
 const CardFeature = ({ images, categories, quantity, description, loading, id,title,price }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllCartItems());
+  }, [dispatch]);
+
   const handleAddCartProduct = (e) => {
     dispatch(
-      addCartItem({
+      fetchAllCartItems({
         _id: id,
         images: images,
         categories: categories,
@@ -29,8 +34,8 @@ const CardFeature = ({ images, categories, quantity, description, loading, id,ti
             to={`/menu/${id}`}
             onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}
           >
-            <div className="h-28 flex flex-col justify-center items-center ">
-              <img src={price} className="h-full" />
+            <div className="h-44 w-44 flex flex-col justify-center items-center ">
+              <img src={images[0]} className="h-full" />
             </div>
             <h3 className="font-semibold text-slate-600  capitalize text-lg mt-4">
               {categories}

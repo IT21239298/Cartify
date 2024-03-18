@@ -1,4 +1,8 @@
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchAllCartItems } from "./services/redux/productSlice"; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -21,6 +25,14 @@ import Cart from "./pages/Cart";
 // import Navbar from "./components/Navbar";
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Fetch all cart items when the app mounts
+    dispatch(fetchAllCartItems());
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <PrimaryHeader />

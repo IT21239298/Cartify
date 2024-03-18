@@ -5,6 +5,8 @@ import FooterSecondary from '../../components/FooterSecondary'
 import Card from '../../components/home/Card'
 
 function Home() {
+
+  
   return (
     <>
       <Banner />

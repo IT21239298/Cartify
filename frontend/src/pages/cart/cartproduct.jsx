@@ -27,8 +27,8 @@ const CartProduct = ({ id, images, categories, qty, title, price, total }) => {
             title
         </h3>
         <div className="flex justify-center">
-            <div className="p-3 bg-white rounded overflow-hidden">
-                <img src={images} className="h-28 w-40 object-cover" />
+            <div className="p-3 bg-white rounded overflow-hidden w-64 h-52">
+                <img src={images[0]} className="h-28 w-40 object-cover" />
             </div>
         </div>
         <p className="text-slate-500 font-medium text-center">categories</p>

@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import AllProduct from "./AllProduct";
-import { addCartItem } from "../../services/redux/productSlice";
+import { fetchAllCartItems } from "../../services/redux/productSlice";
+import axios from "axios";
+import { API_BASE_URL } from "../../utils/constants";
+
 
 const Menu = () => {
   const { filterby } = useParams();
   const dispatch = useDispatch();
   const productData = useSelector((state) => state.product.productList);
 
+  useEffect(() => {
+    dispatch(fetchAllCartItems());
+  }, [dispatch]);
+
   const productDisplay = productData.filter((el) => el._id === filterby)[0];
   console.log(productDisplay);
 
   const handleAddCartProduct = (e) => {
-    dispatch(addCartItem(productDisplay));
+    // Assuming productDisplay is an object representing the product data
+    const productDisplayWithQty = { ...productDisplay, qty: 1 }; // Add qty field with a default value, adjust as needed
+  
+    dispatch(fetchAllCartItems(productDisplayWithQty));
+    console.log("Product display with qty:", productDisplayWithQty);
+  
+    axios
+      .post(`${API_BASE_URL}/api/cart`, productDisplayWithQty)
+      .then((response) => {
+        console.log("Product added to cart successfully:", response.data);
+        // Handle success if needed
+      })
+      .catch((error) => {
+        console.error("Error adding product to cart:", error);
+        // Handle error if needed
+      });
   };
   return (
     <div className="p-2 md:p-4">
@@ -46,7 +67,6 @@ const Menu = () => {
           </div>
         </div>
       </div>
-     
     </div>
   );
 };
