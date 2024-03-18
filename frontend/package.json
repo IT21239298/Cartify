@@ -5,7 +5,11 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
-    "@fortawesome/fontawesome-free": "^6.5.1",
+
+
+    "@fortawesome/fontawesome-free": "^6.0.0",
+
+
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "@mui/icons-material": "^5.15.11",
@@ -25,14 +29,9 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
-
-    "web-vitals": "^2.1.4",
-    "@fortawesome/fontawesome-free": "^6.0.0",
-    
-
     "react-slick": "^0.30.2",
-    "slick-carousel": "^1.8.1"
-
+    "slick-carousel": "^1.8.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
