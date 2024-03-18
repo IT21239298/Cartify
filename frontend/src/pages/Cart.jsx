@@ -33,7 +33,7 @@ export default function Cart() {
   //   };
   //   fetchAllContents();
   // }, [dispatch]); // Include dispatch in dependency array
-   console.log("rergdwdqwdwqdwdwdwdwregg",productCartItem);
+   console.log(" cart item rergdwdqwdwqdwdwdwdwregg",productCartItem);
   const totalQty = productCartItem.reduce(
     (acc, curr) => acc + parseInt(curr.qty),
     0

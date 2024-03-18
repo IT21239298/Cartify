@@ -24,9 +24,13 @@ export const productSlice = createSlice({
           if (check) {
             toast("Already Item in Cart");
           } else {
-            toast("Item Add successfully");
-            const total = item.price;
-            state.cartItem.push({ ...item, qty: 1, total: total });
+            toast("Item Added Successfully");
+            let qty = 1; // Default quantity
+            if (item.qty && item.qty > 1) {
+              qty = item.qty; // Set quantity from database if greater than 1
+            }
+            const total = item.price * qty;
+            state.cartItem.push({ ...item, qty: qty, total: total });
           }
         });
       } else {
@@ -45,29 +49,29 @@ export const productSlice = createSlice({
     deleteCartItemFailure: (state, action) => {
       toast.error("Failed to delete item");
     },
-    increaseQty: (state, action) => {
-      const index = state.cartItem.findIndex((el) => el._id === action.payload);
-      let qty = state.cartItem[index].qty;
-      const qtyInc = ++qty;
-      state.cartItem[index].qty = qtyInc;
+    // increaseQty: (state, action) => {
+    //   const index = state.cartItem.findIndex((el) => el._id === action.payload);
+    //   let qty = state.cartItem[index].qty;
+    //   const qtyInc = ++qty;
+    //   state.cartItem[index].qty = qtyInc;
 
-      const price = state.cartItem[index].price;
-      const total = price * qtyInc;
+    //   const price = state.cartItem[index].price;
+    //   const total = price * qtyInc;
 
-      state.cartItem[index].total = total;
-    },
-    decreaseQty: (state, action) => {
-      const index = state.cartItem.findIndex((el) => el._id === action.payload);
-      let qty = state.cartItem[index].qty;
-      if (qty > 1) {
-        const qtyDec = --qty;
-        state.cartItem[index].qty = qtyDec;
-
+    //   state.cartItem[index].total = total;
+    // },
+    decreaseQtySuccess: (state, action) => {
+      const { itemId, newQty } = action.payload;
+      const index = state.cartItem.findIndex((el) => el._id === itemId);
+      if (index !== -1) {
+        state.cartItem[index].qty = newQty;
         const price = state.cartItem[index].price;
-        const total = price * qtyDec;
-
+        const total = price * newQty;
         state.cartItem[index].total = total;
       }
+    },
+    decreaseQtyFailure: (state, action) => {
+      toast.error("Failed to decrease quantity");
     },
   },
 });
@@ -76,8 +80,9 @@ export const {
   setDataProduct,
   addCartItemSuccess,
   addCartItemFailure,
-  increaseQty,
-  decreaseQty,
+  // increaseQty,
+  decreaseQtySuccess,
+  decreaseQtyFailure,
   deleteCartItemFailure,
   deleteCartItemSuccess,
 } = productSlice.actions;
@@ -105,5 +110,31 @@ export const fetchAllCartItems = () => async (dispatch) => {
     dispatch(addCartItemFailure(error)); // Dispatch action in case of failure
   }
 };
+export const decreaseCartItemQuantity = (itemId, newQty) => async (dispatch) => {
+  try {
+    // Fetch the current cart item to get other fields
+    const currentItemResponse = await axios.get(`http://localhost:8082/cart/${itemId}`);
+
+    const { price, description, categories, title } = currentItemResponse.data;
+
+    // Make API request to update the cart item with new quantity
+    await axios.put(`http://localhost:8082/cart/${itemId}`, {
+      title,
+      description,
+      categories,
+      price,
+      qty: newQty || 0 // Include the new quantity in the request body
+    });
+
+    // If update is successful, dispatch decreaseQtySuccess action
+    dispatch(decreaseQtySuccess({ itemId, newQty }));
+    toast.success("Quantity decreased successfully");
+  } catch (error) {
+    // If update fails, dispatch decreaseQtyFailure action
+    dispatch(decreaseQtyFailure(error));
+  }
+};
+
+
 
 export default productSlice.reducer;
