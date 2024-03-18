@@ -63,7 +63,7 @@ export default function SellerItemCard({
                 component="img"
                 maxWidth="345px"
                 height="194px"
-                src={`data:image/jpeg;base64,${image}`} // Set src attribute with base64-encoded image
+                src={image} // Set src attribute with image URL
                 alt={`${title} - ${index}`}
               />
             ))}
