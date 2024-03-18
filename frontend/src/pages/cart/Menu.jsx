@@ -46,7 +46,7 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <AllProduct heading={""} />
+     
     </div>
   );
 };

@@ -8,8 +8,7 @@ import SecondaryHeader from "./components/SecondaryHeader";
 import Seller from "./pages/Seller";
 import Customer from "./pages/Customer";
 import ContactUs from "./pages/ContactUs";
-import FooterSecondary from "./components/FooterSecondary"
-
+import FooterSecondary from "./components/FooterSecondary";
 
 import Item from "./pages/seller/Item";
 import Selleritem from "./pages/seller/selleritem";
@@ -26,7 +25,7 @@ function App() {
     <BrowserRouter>
       <PrimaryHeader />
       <SecondaryHeader />
-     
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -34,24 +33,17 @@ function App() {
         <Route path="/seller" element={<Seller />} />
         <Route path="/customer" element={<Customer />} />
         <Route path="/cart" element={<Cart />} />
-         <Route path="/ContactUs" element={<ContactUs />} />
-
+        <Route path="/ContactUs" element={<ContactUs />} />
 
         <Route path="/item" element={<Item />} />
         <Route path="/selleritem" element={<Selleritem />} />
         <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
 
-
-        <Route path="/shop" element={<Shop/>} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="menu" element={<Menu />} />
-       <Route path="menu/:filterby" element={<Menu />} />
-      
-
-
-
-        </Routes>
-        <FooterSecondary />
-
+        <Route path="menu/:filterby" element={<Menu />} />
+      </Routes>
+      <FooterSecondary />
     </BrowserRouter>
   );
 }
