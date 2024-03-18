@@ -12,6 +12,7 @@ import { API_BASE_URL } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InputLabel from "@mui/material/InputLabel";
+import { ImagetoBase64 } from "../../utility/ImagetoBase64";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -25,29 +26,25 @@ export default function SignIn() {
   // Ensure your form submission to use FormData for sending files
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    const files = event.target.image.files;
 
+    const data = {
+      title: event.target.title.value,
+      description: event.target.description.value,
+      price: event.target.price.value,
+      quantity: event.target.quantity.value,
+      categories: categories,
+      images: [],
+    };
+
+    const files = event.target.image.files;
     for (let i = 0; i < files.length; i++) {
-      formData.append("images", files[i]);
+      const file = files[i];
+      const base64Image = await ImagetoBase64(file);
+      data.images.push(base64Image);
     }
 
-    formData.append("title", event.target.title.value);
-    formData.append("description", event.target.description.value);
-    formData.append("price", event.target.price.value);
-    formData.append("quantity", event.target.quantity.value);
-    formData.append("categories", categories); // Include categories in the form data
-
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/api/seller/add`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${API_BASE_URL}/api/seller/add`, data);
       navigate("/selleritem");
       console.log("Server response:", response.data);
       // Handle success response from the server
@@ -56,6 +53,7 @@ export default function SignIn() {
       // Handle error response from the server
     }
   };
+
   const [categories, setCategories] = React.useState("");
   const navigate = useNavigate();
   return (
