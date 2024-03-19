@@ -1,12 +1,9 @@
 import React from 'react'
+import ShopHeader from '../../components/Shop/ShopHeader';
 
 function Newshop() {
   return (
-    <header className="py-4 shadow-sm bg-blue-300">
-    <div className="container flex items-center justify-between">
-
-        </div>
-        </header>
+    <ShopHeader/>
   )
 }
 

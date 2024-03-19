@@ -1734,6 +1734,21 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
+.circle-container {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden; /* Ensures the image stays within the circular container */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow effect */
+}
+
+.circle-container:hover {
+  box-shadow: 0 0 10px rgb(147 197 253); /* Shadow effect on hover */
+}
+
+.circle-img {
+  width: 100%; /* Ensures the image takes the full space of the circular container */
+  height: auto; /* Maintains aspect ratio */
+}
 .opacity-0 {
   opacity: 0;
 }
