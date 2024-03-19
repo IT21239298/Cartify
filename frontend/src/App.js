@@ -18,6 +18,7 @@ import UpdateItem from "./pages/seller/UpdateItem";
 import Shop from "./pages/shop";
 import Menu from "./pages/cart/Menu";
 import Cart from "./pages/Cart";
+import Admincontact from "./pages/Admincontact";
 
 // import Navbar from "./components/Navbar";
 
@@ -35,6 +36,8 @@ function App() {
         <Route path="/customer" element={<Customer />} />
         <Route path="/cart" element={<Cart />} />
          <Route path="/ContactUs" element={<ContactUs />} />
+         <Route path="/Admincontact" element={<Admincontact/>} />
+
 
 
         <Route path="/item" element={<Item />} />
