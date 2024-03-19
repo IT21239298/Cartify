@@ -9,16 +9,14 @@ import Seller from "./pages/Seller";
 import Customer from "./pages/Customer";
 import ContactUs from "./pages/ContactUs";
 import FooterSecondary from "./components/FooterSecondary"
-
-
 import Item from "./pages/seller/Item";
 import Selleritem from "./pages/seller/selleritem";
 import UpdateItem from "./pages/seller/UpdateItem";
-
 import Shop from "./pages/shop";
 import Menu from "./pages/cart/Menu";
 import Cart from "./pages/Cart";
 import Admincontact from "./pages/Admincontact";
+import Newshop from "./pages/Shop/Newshop";
 
 // import Navbar from "./components/Navbar";
 
@@ -37,6 +35,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
          <Route path="/ContactUs" element={<ContactUs />} />
          <Route path="/Admincontact" element={<Admincontact/>} />
+         <Route path="/NewShop" element={< Newshop/>} />
 
 
 
