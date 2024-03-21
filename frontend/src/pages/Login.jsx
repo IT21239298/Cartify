@@ -20,18 +20,18 @@ function Login() {
 
   const navigate = useNavigate();
 
-useEffect(() => {
-  if (userInfo) {
-    // Check if "User" role is included in the roles array
-    if (userInfo.roles.includes("User")) {
-      navigate("/");
-      window.location.reload();
-    } else if (userInfo.roles.includes("Superadmin")) {
-      navigate("/selleritem");
-      window.location.reload();
+  useEffect(() => {
+    if (userInfo) {
+      // Check if "User" role is included in the roles array
+      if (userInfo.roles.includes("User")) {
+        navigate("/");
+        window.location.reload();
+      } else if (userInfo.roles.includes("Superadmin")) {
+        navigate("/sellerDashboard");
+        window.location.reload();
+      }
     }
-  }
-}, [navigate, userInfo]);
+  }, [navigate, userInfo]);
 
   const { email, password } = formData;
 

@@ -19,6 +19,8 @@ import Menu from "./pages/cart/Menu";
 import AdminReview from "./pages/AdminReview";
 import Cart from "./pages/Cart";
 import Review from "./components/Review";
+import SellerDashboard from "./pages/seller/SellerDashboard";
+// import StarReview from "./components/StarReview";
 import SellerReview from "./pages/seller/SellerReview";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -42,6 +44,8 @@ function App() {
         <Route path="/reviewrating" element={<SellerReview />} />
         <Route path="/adminReview" element={<AdminReview />} />
         <Route path="/item" element={<Item />} />
+        <Route path="/sellerDashboard" element={<SellerDashboard />} />
+        {/* <Route path="/star" element={<StarReview />} /> */}
         <Route path="/selleritem" element={<Selleritem />} />
         <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
 
