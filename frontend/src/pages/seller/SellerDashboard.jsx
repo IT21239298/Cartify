@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import Chart from "chart.js/auto"; // Import Chart.js
 
 // TotalItemsCard Component
@@ -103,6 +103,51 @@ const SellerDashboard = () => {
   return (
     <div>
       <Grid sx={{ mt: "20px" }} container spacing={2}>
+        <Grid item xs={12}>
+          <Button
+            href="/item"
+            variant="contained"
+            sx={{
+              bgcolor: "rgb(23, 37, 84)",
+              color: "white",
+              "&:hover": {
+                bgcolor: "#121c40",
+              },
+              ml: "20px",
+            }}
+          >
+            Add Items
+          </Button>
+          <Button
+            href="/selleritem"
+            variant="contained"
+            sx={{
+              bgcolor: "rgb(23, 37, 84)",
+              color: "white",
+              "&:hover": {
+                bgcolor: "#121c40",
+              },
+              ml: "20px",
+            }}
+          >
+            My Items
+          </Button>
+          <Button
+            href="/reviewrating"
+            variant="contained"
+            sx={{
+              bgcolor: "rgb(23, 37, 84)",
+              color: "white",
+              "&:hover": {
+                bgcolor: "#121c40",
+              },
+              ml: "20px",
+            }}
+          >
+            My Reviews
+          </Button>
+        </Grid>
+
         <Grid item xs={4}>
           <TotalItemsCard totalItems={totalItems} />
         </Grid>
@@ -114,8 +159,8 @@ const SellerDashboard = () => {
         </Grid>
       </Grid>
 
-      <Grid container justifyContent="center" sx={{ mt: "20px" }}>
-        <Grid item xs={12}>
+      <Grid container justifyContent="center" sx={{ mt: "20px", mb: "20px" }}>
+        <Grid item xs={10}>
           <SellerBarChart data={chartData} />
         </Grid>
       </Grid>
