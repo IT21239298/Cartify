@@ -16,8 +16,11 @@ import UpdateItem from "./pages/seller/UpdateItem";
 
 import Shop from "./pages/shop";
 import Menu from "./pages/cart/Menu";
+import AdminReview from "./pages/AdminReview";
 import Cart from "./pages/Cart";
 import Review from "./components/Review";
+import SellerReview from "./pages/seller/SellerReview";
+import { ToastContainer, toast } from "react-toastify";
 
 // import Navbar from "./components/Navbar";
 
@@ -36,7 +39,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/review" element={<Review />} />
-
+        <Route path="/reviewrating" element={<SellerReview />} />
+        <Route path="/adminReview" element={<AdminReview />} />
         <Route path="/item" element={<Item />} />
         <Route path="/selleritem" element={<Selleritem />} />
         <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
@@ -46,6 +50,18 @@ function App() {
         <Route path="menu/:filterby" element={<Menu />} />
       </Routes>
       <FooterSecondary />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </BrowserRouter>
   );
 }

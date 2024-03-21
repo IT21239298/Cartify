@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import Rating from "react-rating-stars-component";
 
 export default function Review() {
   const [reviewTitle, setReviewTitle] = useState("");
@@ -42,7 +41,7 @@ export default function Review() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-right">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -111,21 +110,7 @@ export default function Review() {
               />
             </div>
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="rating"
-              className="block text-gray-700 font-bold mb-2"
-            >
-              Rating
-            </label>
-            <Rating
-              name="rating"
-              count={5}
-              onChange={(newRating) => setRating(newRating)}
-              size={24}
-              activeColor="#ffd700"
-            />
-          </div>
+
           <div className="flex items-center justify-between">
             <button
               type="submit"

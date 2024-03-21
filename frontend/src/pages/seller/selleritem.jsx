@@ -5,6 +5,8 @@ import SellerItemCard from "../../components/seller/sellerItemcard";
 import { API_BASE_URL } from "../../utils/constants";
 import moment from "moment";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SellerItem() {
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -14,6 +16,8 @@ export default function SellerItem() {
   const handleDelete = async (itemId) => {
     try {
       await axios.delete(`${API_BASE_URL}/api/seller/delete/${itemId}`);
+      toast.success("successfully Deleted!");
+      navigate("/selleritem");
       setCardData(cardData.filter((item) => item._id !== itemId));
     } catch (err) {
       console.log(err);
@@ -31,7 +35,7 @@ export default function SellerItem() {
       try {
         const res = await axios.get(`${API_BASE_URL}/api/seller/get`);
         setCardData(res.data);
-        console.log("res card dtaaaa",res.data)
+        console.log("res card dtaaaa", res.data);
       } catch (err) {
         console.log(err);
       }
@@ -41,14 +45,26 @@ export default function SellerItem() {
 
   return (
     <div>
-      <Button href="/item">Add Items</Button>
+      <Button
+        href="/item"
+        sx={{
+          marginLeft: "90%",
+          marginTop: "10px",
+          bgcolor: "rgb(23, 37, 84)",
+          color: "white",
+          "&:hover": {
+            bgcolor: "#121c40",
+          },
+        }}
+      >
+        Add Items
+      </Button>
       <Grid container spacing={2}>
         {cardData.map((sitem, index) => (
           <Grid item key={index} xs={12} sm={6} md={3}>
-            <Box marginTop={1}>
+            <Box marginTop={1} marginBottom={2}>
               <SellerItemCard
                 title={sitem.title}
-                subheader={moment(sitem).format("MMM DD, YYYY")}
                 price={sitem.price}
                 images={sitem.images}
                 description={sitem.description}

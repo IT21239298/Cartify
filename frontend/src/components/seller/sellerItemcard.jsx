@@ -32,7 +32,7 @@ export default function SellerItemCard({
       sx={{
         border: "6px solid #e0e0e0",
         maxWidth: 350,
-        height: "70%",
+        height: "50%",
         "&:hover": {
           bgcolor: hovered ? "#D3D3D3" : "#",
         },
@@ -42,7 +42,7 @@ export default function SellerItemCard({
     >
       <CardHeader
         titleTypographyProps={{
-          variant: "h6",
+          variant: "h4",
           style: { fontWeight: "bold" },
         }}
         title={title}
@@ -51,6 +51,7 @@ export default function SellerItemCard({
       {images &&
         images.length > 0 && ( // Check if images array is not empty
           <Carousel
+            sx={{ height: "210px" }}
             autoPlay={false}
             animation="slide"
             indicators={true}
@@ -59,10 +60,10 @@ export default function SellerItemCard({
           >
             {images.map((image, index) => (
               <CardMedia
+                sx={{ height: "200px" }}
                 key={index}
                 component="img"
                 maxWidth="345px"
-                height="194px"
                 src={image} // Set src attribute with image URL
                 alt={`${title} - ${index}`}
               />
@@ -71,7 +72,7 @@ export default function SellerItemCard({
         )}
       <CardContent>
         <Typography
-          sx={{ color: "#222831", fontSize: "10px" }}
+          sx={{ color: "#222831", fontSize: "15px" }}
           style={{
             overflow: "hidden",
             textOverflow: "ellipsis",
