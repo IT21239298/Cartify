@@ -12,7 +12,9 @@ import { API_BASE_URL } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InputLabel from "@mui/material/InputLabel";
+
 import Lottie from "react-lottie";
+
 import { ImagetoBase64 } from "../../utility/ImagetoBase64";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -49,7 +51,9 @@ export default function SignIn() {
 
     try {
       const response = await axios.post(`${API_BASE_URL}/api/seller/add`, data);
+
       toast.success("Item added successfully!");
+
       navigate("/selleritem");
 
       console.log("Server response:", response.data);

@@ -4,7 +4,15 @@ const jwt = require("jsonwebtoken");
 const { User } = require("../models/auth.model");
 async function signup(req, res) {
   try {
-    const { firstName, lastName, email, password, confirmPassword, image, roles } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+      image,
+      roles,
+    } = req.body;
 
     const existingUser = await User.findOne({ email: email });
 
@@ -19,7 +27,7 @@ async function signup(req, res) {
         password: hashedPassword,
         confirmPassword,
         image,
-       // roles: roles || [ROLES.USER] 
+        // roles: roles || [ROLES.USER]
       });
       await newUser.save();
       res.send({ message: "Successfully Sign Up...!", alert: true });
@@ -31,7 +39,6 @@ async function signup(req, res) {
       .send({ message: "An error occurred during signup", alert: false });
   }
 }
-
 
 async function login(req, res, next) {
   try {
