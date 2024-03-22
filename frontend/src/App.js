@@ -41,6 +41,8 @@ import Newshop from "./pages/Shop/Newshop";
 import Checkout from "./pages/Checkout";
 
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import ReviewDetails from "./pages/Admin/ReviewDetails";
+import ContactDetails from "./pages/Admin/ContactDetails";
 
 
 
@@ -80,6 +82,8 @@ function App() {
 
 
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
+        <Route path="/ReviewDetails" element={<ReviewDetails />} />
+        <Route path="/ContactDetails" element={<ContactDetails />} />
 
 
 
