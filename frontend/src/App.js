@@ -99,7 +99,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
 
       </Routes>
-      <FooterSecondary />
+      
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
