@@ -23,7 +23,11 @@ import UpdateItem from "./pages/seller/UpdateItem";
 import Shop from "./pages/shop";
 import Menu from "./pages/cart/Menu";
 import Cart from "./pages/Cart";
+
 import Checkout from "./pages/Checkout";
+
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+
 
 
 function App() {
@@ -49,6 +53,10 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/ContactUs" element={<ContactUs />} />
 
+
+        <Route path="/AdminDashboard" element={<AdminDashboard />} />
+
+
         <Route path="/item" element={<Item />} />
         <Route path="/selleritem" element={<Selleritem />} />
         <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
@@ -56,6 +64,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="menu" element={<Menu />} />
         <Route path="menu/:filterby" element={<Menu />} />
+
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <FooterSecondary />
