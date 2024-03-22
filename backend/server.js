@@ -30,6 +30,8 @@ const con = require("./db/connection.js");
 //authentication route
 app.use(authRouter);
 app.use("/api/seller", require("./routes/sellerRoute.js"));
+app.use("/api/contactus", require("./routes/contactus.router.js"))
+
 con
   .then((db) => {
     if (!db) return process.exit(1);
