@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-function DefaultButton({title, onClick}) {
+function DefaultButton({ title, onClick }) {
   return (
-    <a onClick={onClick} className="bg-primary border-primary text-white px-8 py-3 font-medium 
-                rounded-md hover:bg-blue-800 hover:text-white cursor-grab">{title}</a>
-  )
+    <button onClick={onClick} className="bg-primary border-primary text-white px-8 py-3 font-medium 
+                rounded-md hover:bg-blue-800 hover:text-white cursor-grab">
+      {title}
+    </button>
+  );
 }
 
-export default DefaultButton
+export default DefaultButton;
