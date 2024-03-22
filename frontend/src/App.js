@@ -18,6 +18,8 @@ import Shop from "./pages/shop";
 import Menu from "./pages/cart/Menu";
 import Cart from "./pages/Cart";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import ReviewDetails from "./pages/Admin/ReviewDetails";
+import ContactDetails from "./pages/Admin/ContactDetails";
 
 // import Navbar from "./components/Navbar";
 
@@ -36,6 +38,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
+        <Route path="/ReviewDetails" element={<ReviewDetails />} />
+        <Route path="/ContactDetails" element={<ContactDetails />} />
 
         <Route path="/item" element={<Item />} />
         <Route path="/selleritem" element={<Selleritem />} />
