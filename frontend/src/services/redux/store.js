@@ -4,6 +4,7 @@ import authReducer from "../../auth/redux/authSlice";
 
 import { authApi } from "../../auth/services/authService";
 import productSlideReducer from "../../services/redux/productSlice";
+import {apiSlice}  from "../../components/Store/apiSlice"
 
 
 
@@ -13,11 +14,12 @@ const store = configureStore({
     product: productSlideReducer,
    
     [authApi.reducerPath]:authApi.reducer,
+    [apiSlice.reducerPath] : apiSlice.reducer
     
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-    .concat(authApi.middleware)
+    .concat(authApi.middleware,apiSlice.middleware )
    
 });
 export default store;
