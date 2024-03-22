@@ -1,4 +1,3 @@
-// SellerItemCard component
 import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -33,7 +32,7 @@ export default function SellerItemCard({
       sx={{
         border: "6px solid #e0e0e0",
         maxWidth: 350,
-        height: "70%",
+        height: "50%",
         "&:hover": {
           bgcolor: hovered ? "#D3D3D3" : "#",
         },
@@ -43,35 +42,37 @@ export default function SellerItemCard({
     >
       <CardHeader
         titleTypographyProps={{
-          variant: "h6",
+          variant: "h4",
           style: { fontWeight: "bold" },
         }}
         title={title}
         subheader={subheader}
       />
-      {images && images.length > 0 && (
-        <Carousel
-          autoPlay={false} // Set to true if you want autoplay
-          animation="slide" // Set to "fade" for fade effect
-          indicators={true} // Show indicators
-          timeout={500} // Transition time
-          navButtonsAlwaysVisible={true} // Show navigation buttons always
-        >
-          {images.map((image, index) => (
-            <CardMedia
-              key={index}
-              component="img"
-              maxWidth="345px"
-              height="194px"
-              src={`http://localhost:8082/${image}`}
-              alt={`${title} - ${index}`}
-            />
-          ))}
-        </Carousel>
-      )}
+      {images &&
+        images.length > 0 && ( // Check if images array is not empty
+          <Carousel
+            sx={{ height: "210px" }}
+            autoPlay={false}
+            animation="slide"
+            indicators={true}
+            timeout={500}
+            navButtonsAlwaysVisible={true}
+          >
+            {images.map((image, index) => (
+              <CardMedia
+                sx={{ height: "200px" }}
+                key={index}
+                component="img"
+                maxWidth="345px"
+                src={image} // Set src attribute with image URL
+                alt={`${title} - ${index}`}
+              />
+            ))}
+          </Carousel>
+        )}
       <CardContent>
         <Typography
-          sx={{ color: "#222831", fontSize: "1opx" }}
+          sx={{ color: "#222831", fontSize: "15px" }}
           style={{
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -89,7 +90,7 @@ export default function SellerItemCard({
             sx={{ color: "#222831", fontSize: "15px", fontWeight: "bold" }}
             variant="body2"
           >
-            Price:$<br></br> {price}
+            Price: ${price}
           </Typography>
           <Typography
             sx={{
@@ -100,8 +101,7 @@ export default function SellerItemCard({
             }}
             variant="body2"
           >
-            Quantity:<br></br>
-            {quantity}
+            Quantity: {quantity}
           </Typography>
         </div>
       </CardContent>
