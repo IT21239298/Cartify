@@ -1,32 +1,33 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import DefaultButton from "../components/home/DefaultButton";
 import CheckoutAddress from "./CheckoutAddres";
 
 function CheckoutForm() {
-    const [showAddressForm, setShowAddressForm] = useState(false);
-    const [showCheckoutAddress, setShowCheckoutAddress] = useState(true);
-  
-    useEffect(() => {
-      // Logic to check if the page is reloaded
-      // Set showCheckoutAddress to true when the page is reloaded
-      setShowCheckoutAddress(true);
-    }, []);
-  
-    const handleAddressButtonClick = () => {
-      setShowAddressForm(!showAddressForm);
-      setShowCheckoutAddress(false); // Hide CheckoutAddress component
-    };
-  
-    const handleContinueButtonClick = () => {
-      setShowCheckoutAddress(true);
-      setShowAddressForm(false); // Hide address form
-    };
-  
+  const [showAddressForm, setShowAddressForm] = useState(false);
+  const [showCheckoutAddress, setShowCheckoutAddress] = useState(true);
+
+  useEffect(() => {
+    // Logic to check if the page is reloaded
+    // Set showCheckoutAddress to true when the page is reloaded
+    setShowCheckoutAddress(true);
+  }, []);
+
+  const handleAddressButtonClick = () => {
+    setShowAddressForm(!showAddressForm);
+    setShowCheckoutAddress(false); // Hide CheckoutAddress component
+  };
+
+  const handleContinueButtonClick = () => {
+    setShowCheckoutAddress(true);
+    setShowAddressForm(false); // Hide address form
+  };
 
   return (
     <div>
       <div className="px-4 pt-4">
-        <p className="mt-8 text-lg font-bold">Which payment card would you like to use ?</p>
+        <p className="mt-8 text-lg font-bold">
+          Which payment card would you like to use ?
+        </p>
       </div>
 
       {/* Render the radio buttons form */}
@@ -63,7 +64,7 @@ function CheckoutForm() {
             name="radio"
             checked
           />
-           <span className="peer-checked:border-blue-800 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-blue-300 bg-white"></span>
+          <span className="peer-checked:border-blue-800 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-blue-300 bg-white"></span>
           <label
             className="peer-checked:border-2 peer-checked:border-blue-700 peer-checked:bg-blue-50 flex cursor-pointer select-none rounded-lg border border-blue-300 p-4"
             htmlFor="radio_2"
@@ -83,7 +84,7 @@ function CheckoutForm() {
 
       {/* Button to show address form */}
       <p
-          onClick={handleAddressButtonClick}
+        onClick={handleAddressButtonClick}
         className={` text-blue-800 underline py-6 ml-32 cursor-pointer font-bold  ${
           showAddressForm ? "hidden" : ""
         }`}
@@ -207,7 +208,7 @@ function CheckoutForm() {
         </div>
       )}
 
-{showCheckoutAddress && <CheckoutAddress />}
+      {showCheckoutAddress && <CheckoutAddress />}
     </div>
   );
 }

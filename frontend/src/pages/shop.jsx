@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { API_BASE_URL } from "../utils/constants";
 import AllProduct from "./cart/AllProduct";
+import ShopHeader from "../components/Shop/ShopHeader";
 
 function Shop() {
   const dispatch = useDispatch();
@@ -26,15 +27,18 @@ function Shop() {
   }, [dispatch]); // Include dispatch in dependency array
   console.log("rergregg", productData);
   return (
-    <section className="heading">
-      {/* <h1>
-        <FaSignInAlt /> Welcome
-      </h1> */}
-      <p>Welcomeee</p>
-      {/* <SellerItem/> */}
-
+        
+    <div>
+      <div>
+          <ShopHeader/>
+      </div>
+      <div>
       <AllProduct heading={""} />
-    </section>
+      </div>
+    </div>
+
+      
+    
   );
 }
 

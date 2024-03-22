@@ -65,12 +65,12 @@ const Menu = () => {
 
   return (
     <div className="p-8">
-      <div className="w-full min-w-[600px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col mx-auto rounded-3xl">
-        <div className=" max-w-4xl m-auto md:flex bg-white">
+      <div className=" min-w-[700px] max-w-[200px] bg-blue-100 hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col mx-auto rounded-3xl">
+        <div className=" max-w-4xl m-auto md:flex">
           <div className="max-w-sm overflow-hidden w-full p-5 -mt-4 ">
             <img
               src={productDisplay.images[0]}
-              className="hover:scale-105 transition-all h-full"
+              className="hover:scale-105 transition-all h-[200px] w-[450px] mr-5 rounded-r"
               alt=""
             />
           </div>
@@ -81,14 +81,24 @@ const Menu = () => {
             <p className="text-slate-500 font-medium text-2xl">
               {productDisplay.categories}
             </p>
-            <p className="text-slate-600 font-sans  mx-auto max-w-4xl text-sm italic text-justify mb-4">
+            <p className="text-slate-600 font-sans  mx-auto max-w-4xl text-sm italic text-justify mb-2">
               {productDisplay.description}
             </p>
-            <p className="font-bold md:text-2xl ml-16">
+            <p className="font-bold md:text-2xl ml-6">
               <span className="text-red-500">Rs.</span>
               <span>{productDisplay.price}</span>
             </p>
-            <div className="flex gap-3 ml-12">
+            <div className="flex items-center ml-4 mt-1 mb-1">
+              <div className="flex gap-1 text-lg text-yellow-500">
+                <span><i className="fa-solid fa-star"></i></span>
+                <span><i className="fa-solid fa-star"></i></span>
+                <span><i className="fa-solid fa-star"></i></span>
+                <span><i className="fa-solid fa-star"></i></span>
+                <span><i className="fa-solid fa-star"></i></span>
+              </div>
+              
+            </div>
+            <div className=" mb-1">
               <DefaultButton title="Shop Now" onClick={handleAddCartProduct} />
             </div>
           </div>

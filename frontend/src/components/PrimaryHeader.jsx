@@ -38,7 +38,7 @@ function PrimaryHeader() {
         <header className="py-4 shadow-sm bg-blue-300">
             <div className="container flex items-center justify-between">
                 <a href="/">
-                    <img src={logo} alt="Logo" className="w-32" />
+                    <h1>Cartify</h1>
                 </a>
 
                 <div className="w-full max-w-xl relative flex">
