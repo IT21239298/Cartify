@@ -1,5 +1,3 @@
-// productSlice.js
-
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -22,12 +20,12 @@ export const productSlice = createSlice({
         items.forEach((item) => {
           const check = state.cartItem.some((el) => el._id === item._id);
           if (check) {
-            toast("Already Item in Cart");
+           
           } else {
-            toast("Item Added Successfully");
-            let qty = 1; // Default quantity
+          
+            let qty = 1;
             if (item.qty && item.qty > 1) {
-              qty = item.qty; // Set quantity from database if greater than 1
+              qty = item.qty;
             }
             const total = item.price * qty;
             state.cartItem.push({ ...item, qty: qty, total: total });
@@ -41,7 +39,7 @@ export const productSlice = createSlice({
       toast.error("Failed to add items to cart");
     },
     deleteCartItemSuccess: (state, action) => {
-      toast("Item deleted successfully");
+      toast.success("Item deleted successfully"); // Change toast type to success
       state.cartItem = state.cartItem.filter(
         (item) => item._id !== action.payload
       );
@@ -49,17 +47,6 @@ export const productSlice = createSlice({
     deleteCartItemFailure: (state, action) => {
       toast.error("Failed to delete item");
     },
-    // increaseQty: (state, action) => {
-    //   const index = state.cartItem.findIndex((el) => el._id === action.payload);
-    //   let qty = state.cartItem[index].qty;
-    //   const qtyInc = ++qty;
-    //   state.cartItem[index].qty = qtyInc;
-
-    //   const price = state.cartItem[index].price;
-    //   const total = price * qtyInc;
-
-    //   state.cartItem[index].total = total;
-    // },
     decreaseQtySuccess: (state, action) => {
       const { itemId, newQty } = action.payload;
       const index = state.cartItem.findIndex((el) => el._id === itemId);
@@ -69,6 +56,7 @@ export const productSlice = createSlice({
         const total = price * newQty;
         state.cartItem[index].total = total;
       }
+      toast.success("Quantity Update successfully"); // Change toast type to success
     },
     decreaseQtyFailure: (state, action) => {
       toast.error("Failed to decrease quantity");
@@ -80,61 +68,50 @@ export const {
   setDataProduct,
   addCartItemSuccess,
   addCartItemFailure,
-  // increaseQty,
   decreaseQtySuccess,
   decreaseQtyFailure,
   deleteCartItemFailure,
   deleteCartItemSuccess,
 } = productSlice.actions;
 
-// Thunk action to delete cart item
 export const deleteCartItem = (id) => async (dispatch) => {
   try {
-    // Make API request to delete the item
     await axios.delete(`http://localhost:8082/cart/${id}`);
-
-    // If deletion is successful, dispatch deleteCartItemSuccess action
     dispatch(deleteCartItemSuccess(id));
   } catch (error) {
-    // If deletion fails, dispatch deleteCartItemFailure action
     dispatch(deleteCartItemFailure(error));
   }
 };
 
-// Thunk action to fetch all cart items
 export const fetchAllCartItems = () => async (dispatch) => {
   try {
     const response = await axios.get("http://localhost:8082/api/cart");
-    dispatch(addCartItemSuccess({ items: response.data })); // Dispatch action to add cart items to the store
+    dispatch(addCartItemSuccess({ items: response.data }));
   } catch (error) {
-    dispatch(addCartItemFailure(error)); // Dispatch action in case of failure
+    dispatch(addCartItemFailure(error));
   }
 };
 export const decreaseCartItemQuantity = (itemId, newQty) => async (dispatch) => {
-  try {
-    // Fetch the current cart item to get other fields
-    const currentItemResponse = await axios.get(`http://localhost:8082/cart/${itemId}`);
+  if (newQty <= 0) {
+    toast.error("Quantity must be greater than 0");
+    return; // Exit the function early if quantity is 0 or negative
+  }
 
+  try {
+    const currentItemResponse = await axios.get(`http://localhost:8082/cart/${itemId}`);
     const { price, description, categories, title } = currentItemResponse.data;
 
-    // Make API request to update the cart item with new quantity
     await axios.put(`http://localhost:8082/cart/${itemId}`, {
       title,
       description,
       categories,
       price,
-      qty: newQty || 0 // Include the new quantity in the request body
+      qty: newQty
     });
 
-    // If update is successful, dispatch decreaseQtySuccess action
     dispatch(decreaseQtySuccess({ itemId, newQty }));
-    toast.success("Quantity decreased successfully");
   } catch (error) {
-    // If update fails, dispatch decreaseQtyFailure action
     dispatch(decreaseQtyFailure(error));
   }
 };
-
-
-
 export default productSlice.reducer;

@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchAllCartItems } from "./services/redux/productSlice"; 
+import { Toaster } from "react-hot-toast"; 
+import { fetchAllCartItems } from "./services/redux/productSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -21,11 +23,10 @@ import UpdateItem from "./pages/seller/UpdateItem";
 import Shop from "./pages/shop";
 import Menu from "./pages/cart/Menu";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
-// import Navbar from "./components/Navbar";
 
 function App() {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
+     <Toaster />
       <PrimaryHeader />
       <SecondaryHeader />
 
@@ -54,6 +56,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="menu" element={<Menu />} />
         <Route path="menu/:filterby" element={<Menu />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <FooterSecondary />
     </BrowserRouter>

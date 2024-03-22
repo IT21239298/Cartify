@@ -20,28 +20,31 @@ const CartProduct = ({ id, images, categories, qty, title, price, total }) => {
     >
       <div className="flex justify-end w-500">
         <div
-          className="cursor-pointer text-slate-700 hover:text-red-500 py-4 "
+          className="cursor-pointer text-blue-900 hover:text-red-500 py-4  "
           style={{ marginLeft: 350 }}
           onClick={() => dispatch(deleteCartItem(id))}
         >
-          <AiFillDelete />
+          <AiFillDelete    size="30px"/>
         </div>
       </div>
       <div className="flex flex-col gap-1 w-full h-full items-center">
-        <h3 className="font-semibold text-slate-600 capitalize text-lg md:text-xl text-center">
-          title
+        <h3 className="text-3xl font-sans text-gray-800 text-justify font-medium mb-2 capitalize -mt-2">
+          {title}
         </h3>
         <div className="flex justify-center">
-          <div className="p-3 bg-white rounded overflow-hidden w-64 h-52">
-            <img src={images[0]} className="h-28 w-40 object-cover" />
+          <div className="p-3 bg-white rounded overflow-hidden w-64 h-52 justify-center">
+            <img src={images[0]} className="h-28 w-40 object-cover " />
           </div>
         </div>
-        <p className="text-slate-500 font-medium text-center">categories</p>
-        <p className="font-bold text-base text-center">
-          <span className="text-red-500">$</span>
-          <span>price</span>
+        <p className="text-slate-500 font-medium text-2xl mt-2 ">
+          {categories}
         </p>
-        <hr className="w-1/2 border-slate-300 my-4" /> {/* Horizontal line */}
+        <hr className="w-3/4 border-blue-900 my-4" />
+        <p className="font-bold md:text-2xl ">
+          <span className="text-red-500">Rs.</span>
+          <span>{price}</span>
+        </p>
+        <hr className="w-3/4 border-blue-900 my-4" />
         <div className="flex gap-3 items-center">
           <button
             onClick={() => dispatch(decreaseCartItemQuantity(id, qty + 1))}
@@ -49,7 +52,7 @@ const CartProduct = ({ id, images, categories, qty, title, price, total }) => {
           >
             <TbPlus />
           </button>
-          <p className="font-semibold p-1">{qty}</p>
+          <p className="font-semibold p-2 mt-1">{qty}</p>
           <button
             onClick={() => dispatch(decreaseCartItemQuantity(id, qty - 1))}
             className="bg-slate-300 py-1 mt-2 rounded hover:bg-slate-400 p-1"
@@ -57,14 +60,14 @@ const CartProduct = ({ id, images, categories, qty, title, price, total }) => {
             <TbMinus />
           </button>
         </div>
-        <div className="flex items-center gap-2 font-bold text-slate-700">
+        <div className="flex items-center gap-2  text-slate-700 font-bold md:text-2xl">
           <p>Total :</p>
           <p>
-            <span className="text-red-500">$</span>
-            total
+            <span className="text-red-500 ">Rs.</span>
+            {total}
           </p>
         </div>
-        <hr className="w-3/4 border-blue-950 my-4" /> {/* Horizontal line */}
+       
       </div>
     </div>
   );
