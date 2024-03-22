@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DefaultButton from "../components/home/DefaultButton";
 import CheckoutAddress from "./CheckoutAddres";
+import visa from "../assets/images/visa.jpg"
+
 
 function CheckoutForm() {
   const [showAddressForm, setShowAddressForm] = useState(false);
@@ -46,8 +48,8 @@ function CheckoutForm() {
             htmlFor="radio_1"
           >
             <img
-              className="w-14 object-contain"
-              src="/images/naorrAeygcJzX0SyNI4Y0.png"
+              className="w-16 object-contain"
+              src={visa}
               alt=""
             />
             <div className="ml-5">
@@ -69,9 +71,9 @@ function CheckoutForm() {
             className="peer-checked:border-2 peer-checked:border-blue-700 peer-checked:bg-blue-50 flex cursor-pointer select-none rounded-lg border border-blue-300 p-4"
             htmlFor="radio_2"
           >
-            <img
-              className="w-14 object-contain"
-              src="/images/oG8xsl3xsOkwkMsrLGKM4.png"
+               <img
+              className="w-16 object-contain"
+              src={visa}
               alt=""
             />
             <div className="ml-5">

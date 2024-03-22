@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartProduct from "../pages/cart/cartproduct";
 import emptyCartImage from "../assets/empty.gif";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Carousel from "react-material-ui-carousel"; // Import Carousel
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { fetchAllCartItems } from "../services/redux/productSlice";
 import DefaultButton from "../components/home/DefaultButton";
+import "boxicons";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -31,15 +30,23 @@ export default function Cart() {
 
   return (
     <div className="p-8  ">
-      <h2 className="text-3xl font-medium font-sans text-primary uppercase mt-2 mb-6 mx-auto px-10">
+      <h2 className="text-3xl font-medium font-sans  uppercase mt-2 mb-2 mx-auto px-10 text-blue-900">
         Your Cart Items
       </h2>
+      <Link to={"/shop"}>
+        <div className="flex cursor-pointer">
+          <div className="ml-32">
+            <box-icon name="undo" size="40px"></box-icon>
+          </div>
+          <div className="mt-2 text-gray-400">Back</div>
+        </div>
+      </Link>
 
-      <div className=" ">
+      <div className="">
         {productCartItem.length > 0 ? (
           <div className="flex flex-col md:flex-row">
             <div
-              className="mx-auto md:ml-20"
+              className="mx-auto md:ml-20 "
               style={{ width: 500, height: 600 }}
             >
               {productCartItem.length > 0 && (

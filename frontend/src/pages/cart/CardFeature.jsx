@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllCartItems } from "../../services/redux/productSlice";
 import { useDispatch } from "react-redux";

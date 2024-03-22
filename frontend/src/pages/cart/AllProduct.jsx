@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardFeature from "./CardFeature";
 import { useSelector } from "react-redux";
-import FilterProduct from "./FilterProduct";
+
 
 const AllProduct = ({ heading }) => {
   const productData = useSelector((state) => state.product.productList);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCartItems } from "../../services/redux/productSlice";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast"
 import { API_BASE_URL } from "../../utils/constants";
 import Reviews from "../../components/reviews/showReviews";
 import DefaultButton from "../../components/home/DefaultButton";
+import AddReview from "../../components/reviews/AddReview";
 import "boxicons";
 
 const Menu = () => {
@@ -15,25 +16,20 @@ const Menu = () => {
   const productData = useSelector((state) => state.product.productList);
   const [showReviews, setShowReviews] = useState(false); // State to control the visibility of reviews
 
+  const [openDialog, setOpenDialog] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
+
+  const handleOpen = () => {
+    setOpenDialog(true);
+    setIsEditOpen(true);
+  };
+
   useEffect(() => {
     dispatch(fetchAllCartItems());
   }, [dispatch]);
 
   const productDisplay = productData.filter((el) => el._id === filterby)[0];
-
-  // useEffect(() => {
-  //   const fetchAllContents = async () => {
-  //     try {
-  //       const res = await axios.get(`http://localhost:8082/cart/${productDisplay._id}`);
-
-  //       console.log("Sithum sfsff", res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchAllContents();
-  // }, [dispatch]); // Include dispatch in dependency array
-  // console.log("rergregg  iddd",productDisplay._id);
 
   const handleAddCartProduct = () => {
     const productDisplayWithQty = { ...productDisplay, qty: 1 };
@@ -58,13 +54,17 @@ const Menu = () => {
     setShowReviews(false);
   };
 
-  const handleAddReviews = () => {
-    // Functionality for adding reviews
-    console.log("Add reviews button clicked");
-  };
 
   return (
     <div className="p-8">
+       <Link to={"/shop"}>
+        <div className="flex cursor-pointer">
+          <div className="ml-32">
+            <box-icon name="undo" size="40px"></box-icon>
+          </div>
+          <div className="mt-2 text-gray-400">Back</div>
+        </div>
+      </Link>
       <div className=" min-w-[700px] max-w-[200px] bg-blue-100 hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col mx-auto rounded-3xl">
         <div className=" max-w-4xl m-auto md:flex">
           <div className="max-w-sm overflow-hidden w-full p-5 -mt-4 ">
@@ -117,18 +117,22 @@ const Menu = () => {
             </button>
             <button
               className="bg-gray-700 border-primary text-white px-6 py-3 font-medium 
-              rounded-md hover:bg-gray-600 hover:text-white cursor-grab   "
-              onClick={handleAddReviews}
+              rounded-md hover:bg-gray-600 hover:text-white cursor-grab mr-20  "
+              onClick={handleOpen}
             >
               Add Reviews
             </button>
+            <AddReview
+            open={openDialog}
+            setOpen={setOpenDialog}
+            />
           </div>
         )}
         {/* Cancel button */}
         {showReviews && (
           <div className="flex justify-center mt-4">
             <button
-              className="bg-red-500 py-1 rounded-full hover:bg-red-600 w-8 h-8 flex items-center justify-center"
+              className="bg-blue-900 py-1 rounded-full hover:bg-blue-800 w-8 h-8 flex items-center justify-center"
               onClick={handleCancelReviews}
             >
               <box-icon

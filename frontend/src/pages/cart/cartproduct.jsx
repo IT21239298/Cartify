@@ -1,12 +1,10 @@
 import React from "react";
-import { BiSolidMessageRoundedDetail } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { TbPlus, TbMinus } from "react-icons/tb";
 import {
   deleteCartItem,
   decreaseCartItemQuantity,
-  increaseQty,
-  decreaseQty,
+
 } from "../../services/redux/productSlice";
 import { useDispatch } from "react-redux";
 

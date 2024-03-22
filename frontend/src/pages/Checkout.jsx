@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { fetchAllCartItems } from "../services/redux/productSlice";
 import DefaultButton from "../components/home/DefaultButton";
 import CheckoutForm from "../components/CheckoutForm";
-import CheckoutAddress from "../components/CheckoutAddres";
+import "boxicons";
 
 export default function Checkout() {
   const dispatch = useDispatch();
@@ -31,10 +31,17 @@ export default function Checkout() {
 
   return (
     <div className="p-8">
-      <h2 className="text-3xl font-medium font-sans text-primary uppercase mt-2 mb-6 mx-auto px-10">
+      <h2 className="text-3xl font-medium font-sans text-blue-900 uppercase mt-2 mb-2 mx-auto px-10">
         Checkout
       </h2>
-
+      <Link to={"/cart"}>
+        <div className="flex cursor-pointer">
+          <div className="ml-32">
+            <box-icon name="undo" size="40px"></box-icon>
+          </div>
+          <div className="mt-2 text-gray-400">Back</div>
+        </div>
+      </Link>
       <div className="ml-12">
         {productCartItem.length > 0 ? (
           <div className="flex ">

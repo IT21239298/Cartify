@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DefaultButton from "../components/home/DefaultButton";
-import CheckoutForm from "./CheckoutForm";
+import location from "../assets/images/location.png"
+
 
 function CheckoutAddress() {
   const [showAddressForm, setShowAddressForm] = useState(false);
@@ -30,7 +31,7 @@ function CheckoutAddress() {
           >
             <img
               className="w-14 object-contain"
-              src="/images/naorrAeygcJzX0SyNI4Y0.png"
+              src={location}
               alt=""
             />
             <div className="ml-5">
@@ -54,7 +55,7 @@ function CheckoutAddress() {
           >
             <img
               className="w-14 object-contain"
-              src="/images/oG8xsl3xsOkwkMsrLGKM4.png"
+              src={location}
               alt=""
             />
             <div className="ml-5">
