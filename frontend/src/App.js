@@ -85,13 +85,14 @@ function App() {
 
         <Route path="/item" element={<Item />} />
         <Route path="/sellerDashboard" element={<SellerDashboard />} />
-        {/* <Route path="/star" element={<StarReview />} /> */}
+     
         <Route path="/selleritem" element={<Selleritem />} />
         <Route path="/UpdateItem/:id/edit" element={<UpdateItem />} />
 
         <Route path="/shop" element={<Shop />} />
         <Route path="menu" element={<Menu />} />
         <Route path="menu/:filterby" element={<Menu />} />
+        <Route path="/checkout" element={<Checkout />} />
 
       </Routes>
       <FooterSecondary />
@@ -108,8 +109,8 @@ function App() {
         theme="dark"
       />
 
-        <Route path="/checkout" element={<Checkout />} />
-      </Routes>
+       
+     
       <FooterSecondary />
 
     </BrowserRouter>
