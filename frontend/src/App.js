@@ -1,4 +1,10 @@
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Toaster } from "react-hot-toast"; 
+import { fetchAllCartItems } from "./services/redux/productSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -17,13 +23,24 @@ import UpdateItem from "./pages/seller/UpdateItem";
 import Shop from "./pages/shop";
 import Menu from "./pages/cart/Menu";
 import Cart from "./pages/Cart";
+
+import Checkout from "./pages/Checkout";
+
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 
-// import Navbar from "./components/Navbar";
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Fetch all cart items when the app mounts
+    dispatch(fetchAllCartItems());
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
+     <Toaster />
       <PrimaryHeader />
       <SecondaryHeader />
 
@@ -35,7 +52,10 @@ function App() {
         <Route path="/customer" element={<Customer />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/ContactUs" element={<ContactUs />} />
+
+
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
+
 
         <Route path="/item" element={<Item />} />
         <Route path="/selleritem" element={<Selleritem />} />
@@ -44,6 +64,8 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="menu" element={<Menu />} />
         <Route path="menu/:filterby" element={<Menu />} />
+
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <FooterSecondary />
     </BrowserRouter>

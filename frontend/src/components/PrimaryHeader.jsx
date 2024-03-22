@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from "react";
-import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { logout } from "../auth/redux/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,8 +17,7 @@ function PrimaryHeader() {
     const userInfoString = useSelector((state) => state.auth.userInfo);
     const navigate = useNavigate();
 
-    const cartItemNumber = useSelector((state) => state.product.cartItem);
-
+    const cartItemNumber = useSelector((state) => state.product.cartItem.length);
     // Check if userInfoString is a JSON string and parse it
     const userInfo =
         typeof userInfoString === "string"
@@ -65,7 +63,7 @@ function PrimaryHeader() {
                         <div
 
                             className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-red-400 text-blue-950 text-xs">
-                             {cartItemNumber.length}</div>
+                              {cartItemNumber}</div>
                     </Link>
 
 

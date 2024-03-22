@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import axios from "axios";
 
@@ -25,7 +24,7 @@ function Shop() {
     };
     fetchAllContents();
   }, [dispatch]); // Include dispatch in dependency array
-   console.log("rergregg",productData);
+  console.log("rergregg", productData);
   return (
     <section className="heading">
       {/* <h1>
