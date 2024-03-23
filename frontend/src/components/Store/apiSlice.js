@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseURI = "http://localhost:3000";
+const baseURI = "http://localhost:8082";
 
 export const apiSlice = createApi({
+  reducerPath: 'apiSlice',
   baseQuery: fetchBaseQuery({ baseUrl: baseURI }),
   endpoints: (builder) => ({
     // Add contact details
@@ -12,15 +13,15 @@ export const apiSlice = createApi({
         method: "POST",
         body: initialContact,
       }),
-      invalidatesTags: ["contactus"],
+      //invalidatesTags: ["contactus"],
     }),
     //get contact details
     get_Contactus: builder.query({
       // get: 'http://localhost:8000/api/contactus'
       query: () => "/api/contactus",
-      providesTags: ["contactus"],
+      //providesTags: ["contactus"],
     }),
  }),
 });
 
-export default apiSlice;
+export const {useAddContactMutation, useGet_ContactusQuery} = apiSlice;

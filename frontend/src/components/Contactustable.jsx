@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Contactustable = ({ contacts }) => {
   return (
     <div className="flex flex-col">
@@ -13,7 +14,7 @@ const Contactustable = ({ contacts }) => {
                     Name
                   </th>
                   <th scope="col" className="px-6 py-3 text-center text-[17px] font-sans font-semibold text-blue-950 uppercase tracking-wider">
-                    Email
+                     Email
                   </th>
                   <th scope="col" className="px-6 py-3 text-center text-[17px] font-sans font-semibold text-blue-950 uppercase tracking-wider">
                     Message
@@ -25,16 +26,17 @@ const Contactustable = ({ contacts }) => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {contacts.map((contact) => (
-                  <tr key={contact.id}>
+                  <tr key={contact._id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{contact.name}</div>
+                      <div className="text-sm text-gray-900">{contact.name ?? ''}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{contact.email}</div>
+                      <div className="text-sm text-gray-900">{contact.email ?? ''}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{contact.message}</div>
+                      <div className="text-sm text-gray-900">{contact.message?? ''}</div>
                     </td>
+                    
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       <button className="text-indigo-600 hover:text-indigo-900">Edit</button>
                       <button className="text-red-600 hover:text-red-900 ml-2">Delete</button>
