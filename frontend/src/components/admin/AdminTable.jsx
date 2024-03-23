@@ -13,19 +13,19 @@ const Table = ({ admins }) => {
                     scope="col"
                     className="px-6 py-3 text-center text-[17px] font-sans font-semibold text-blue-950 uppercase tracking-wider"
                   >
-                    Name
+                    FirstName
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-[17px] font-sans font-semibold text-blue-950 uppercase tracking-wider"
+                  >
+                    LastName
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-center text-[17px] font-sans font-semibold text-blue-950 uppercase tracking-wider"
                   >
                     Email
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-[17px] font-sans font-semibold text-blue-950 uppercase tracking-wider"
-                  >
-                    Message
                   </th>
                   <th
                     scope="col"
@@ -39,15 +39,17 @@ const Table = ({ admins }) => {
                 {admins.map((admin) => (
                   <tr key={admin.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{admin.name}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{admin.email}</div>
+                      <div className="text-sm text-gray-900">
+                        {admin.firstName}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">
-                        {admin.message}
+                        {admin.lastName}
                       </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">{admin.email}</div>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                       <button className="text-indigo-600 hover:text-indigo-900">
