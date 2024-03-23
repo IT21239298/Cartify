@@ -12,9 +12,16 @@ import { API_BASE_URL } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InputLabel from "@mui/material/InputLabel";
+
+import Lottie from "react-lottie";
+
+import { ImagetoBase64 } from "../../utility/ImagetoBase64";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import animationData from "../../assets/json/shop.json";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const defaultTheme = createTheme();
 
@@ -22,85 +29,99 @@ export default function SignIn() {
   const handleChange = (event) => {
     setCategories(event.target.value);
   };
-  // Ensure your form submission to use FormData for sending files
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
+
+    const data = {
+      title: event.target.title.value,
+      description: event.target.description.value,
+      price: event.target.price.value,
+      quantity: event.target.quantity.value,
+      categories: categories,
+      images: [],
+    };
+
     const files = event.target.image.files;
-
     for (let i = 0; i < files.length; i++) {
-      formData.append("images", files[i]);
+      const file = files[i];
+      const base64Image = await ImagetoBase64(file);
+      data.images.push(base64Image);
     }
-
-    formData.append("title", event.target.title.value);
-    formData.append("description", event.target.description.value);
-    formData.append("price", event.target.price.value);
-    formData.append("quantity", event.target.quantity.value);
-    formData.append("categories", categories); // Include categories in the form data
 
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/api/seller/add`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${API_BASE_URL}/api/seller/add`, data);
+
+      toast.success("Item added successfully!");
+
       navigate("/selleritem");
+
       console.log("Server response:", response.data);
-      // Handle success response from the server
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Handle error response from the server
+
+      toast.error("Error adding item. Please try again.");
     }
   };
+
   const [categories, setCategories] = React.useState("");
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="lg">
         <CssBaseline />
+
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            justifyContent: "center",
+            mt: "20px",
+            mb: "15px",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "#747264" }}>
-            <StorefrontIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sell Item
-          </Typography>
+          {/* Animation or content for the left side */}
           <Box
             sx={{
-              marginTop: 3,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              backgroundColor: "#F5F7F8", // Change the background color here
-              padding: 3,
+              width: "50%",
+              backgroundColor: "rgb(147, 197, 253)",
+              borderTopLeftRadius: "20px",
+              borderBottomLeftRadius: "20px",
+            }}
+          >
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: animationData,
+              }}
+            />
+            {/* Add your animation or content here */}
+          </Box>
 
-              borderRadius: "10px",
-              // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
+          {/* Form on the right side */}
+          <Box
+            sx={{
+              width: "50%",
+              backgroundColor: "#F5F7F8",
+              padding: 3,
+              borderTopRightRadius: "20px",
+              borderBottomRightRadius: "20px",
             }}
             component="form"
             onSubmit={handleSubmit}
             noValidate
-            // sx={{ mt: 1 }}
-            encType="multipart/form-data" // Add this line
+            encType="multipart/form-data"
           >
-            {/* Replace the existing TextField components with the new fields */}
+            <Typography component="h1" variant="h5" sx={{ fontWeight: "bold" }}>
+              SELL ITEM
+            </Typography>
             <TextField
               margin="normal"
               fullWidth
               id="image"
               name="image"
               type="file"
-              inputProps={{ multiple: true, accept: "image/*" }} // Allow multiple files
+              inputProps={{ multiple: true, accept: "image/*" }}
             />
             <TextField
               margin="normal"
@@ -129,9 +150,15 @@ export default function SignIn() {
                 label="Categories"
                 onChange={handleChange}
               >
-                <MenuItem value="Clothes">Clothes</MenuItem>
-                <MenuItem value="Electronics">Electronics</MenuItem>
+                <MenuItem value="Shoes">Shoes</MenuItem>
+                <MenuItem value="Luuggage & Bags">Luuggage & Bags</MenuItem>
+                <MenuItem value="Accessories">Accessories</MenuItem>
                 <MenuItem value="Toys">Toys</MenuItem>
+                <MenuItem value="Phone Accessories">Phone Accessories</MenuItem>
+                <MenuItem value="Jewelry & Watches">Jewelry & Watches</MenuItem>
+                <MenuItem value="Consumer Electronics">
+                  Consumer Electronics
+                </MenuItem>
               </Select>
             </FormControl>
             <TextField
@@ -152,7 +179,6 @@ export default function SignIn() {
               name="quantity"
               type="number"
             />
-
             <Button
               type="submit"
               fullWidth
@@ -163,7 +189,6 @@ export default function SignIn() {
             </Button>
           </Box>
         </Box>
-        <Box sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

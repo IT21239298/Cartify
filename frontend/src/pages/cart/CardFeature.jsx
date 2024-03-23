@@ -1,60 +1,64 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { addCartItem } from "../../services/redux/productSlice";
+import { fetchAllCartItems } from "../../services/redux/productSlice";
 import { useDispatch } from "react-redux";
 
-const CardFeature = ({ images, categories, quantity, description, loading, id,title,price }) => {
+const CardFeature = ({
+  images,
+  categories,
+  quantity,
+  description,
+  loading,
+  id,
+  title,
+  price,
+}) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllCartItems());
+  }, [dispatch]);
+
   const handleAddCartProduct = (e) => {
     dispatch(
-      addCartItem({
+      fetchAllCartItems({
         _id: id,
         images: images,
         categories: categories,
         quantity: quantity,
         description: description,
-        title:title,
-        price:price
-       
-       
+        title: title,
+        price: price,
       })
     );
   };
 
   return (
-    <div className="w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col ">
+    <div className="w-full min-w-250px] max-w-[250px] bg-blue-100 hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col justify-center ">
       {price ? (
         <>
           <Link
             to={`/menu/${id}`}
             onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}
           >
-            <div className="h-28 flex flex-col justify-center items-center ">
-              <img src={price} className="h-full" />
+            <div className="h-44 w-44 flex flex-col ml-6 ">
+              <img src={images[0]} className="h-full rounded-lg" />
             </div>
-            <h3 className="font-semibold text-slate-600  capitalize text-lg mt-4">
-              {categories}
+            <h3 className="text-2xl font-sans text-gray-800 text-justify font-medium mb-2 capitalize ml-20">
+              {title}
             </h3>
-            <p className=" text-slate-500  font-medium">{price}</p>
-            <p className=" font-bold">
-              <span className="text-red-500">$</span>
+            <p className=" text-slate-500 font-medium text-sm ml-16">
+              {categories}
+            </p>
+
+            <p className=" font-bold ml-20">
               <span>{quantity}</span>
             </p>
             <p className=" font-bold">
-              <span className="text-red-500">$</span>
-              <span>{description}</span>
-            </p>
-            <p className=" font-bold">
-              <span className="text-red-500">$</span>
-              <span>{title}</span>
+              <span className="text-red-500 ml-16 text-lg">Rs.</span>
+              <span>{price}</span>
             </p>
           </Link>
-          <button
-            className="bg-blue-500 py-1 mt-2 rounded hover:bg-blue-600 w-full"
-            onClick={handleAddCartProduct}
-          >
-            Add Cart
-          </button>
         </>
       ) : (
         <div className="flex justify-center  text-red-500 items-center h-full">
