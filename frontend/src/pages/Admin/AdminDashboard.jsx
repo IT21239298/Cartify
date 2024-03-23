@@ -20,10 +20,12 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
-      <h1 className="mb-4 text-2xl font-bold">AdminDashboard</h1>
-      {/* <adminTable admins={admins} /> */}``
-      <AdminTable admins={admins} />
+    <div className="flex">
+      <div className="container mx-auto">
+        <h1 className="mb-4 text-2xl font-bold">AdminDashboard</h1>
+        {/* <adminTable admins={admins} /> */}``
+        <AdminTable admins={admins} />
+      </div>
     </div>
   );
 };

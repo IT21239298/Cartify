@@ -3,9 +3,9 @@ import { Card, CardContent, Typography, Button } from "@mui/material";
 
 const SellerPage = () => {
   const DummySellerData = [
+    { sellerName: "Hansaja Gunasekara" },
     { sellerName: "Kavindu Thennakoon" },
-    { sellerName: "Kavindu Thennakoon" },
-    { sellerName: "Kavindu Thennakoon" },
+    { sellerName: "Rashini Dahanayake" },
   ];
 
   const handleWarningClick = () => {
@@ -80,7 +80,7 @@ const SellerPage = () => {
               variant="contained"
               onClick={handleWarningClick}
               sx={{
-                bgcolor: "#ff6347",
+                bgcolor: "#124076",
                 "&:hover": {
                   bgcolor: "#E72929",
                 },
@@ -88,7 +88,7 @@ const SellerPage = () => {
                 marginLeft: "10px",
               }}
             >
-              Warning
+              Pending
             </Button>
             <Button
               variant="contained"
